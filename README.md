@@ -1,6 +1,6 @@
 # Hunter V1.0
 
-Whats included 
+**Whats included**
 
 * **Hunter F6**
    * Custom SFM (Has not been tested in formation)
@@ -9,7 +9,7 @@ Whats included
    * Custom HUD (not on a real hunter I know)
    * Control Indicators
 
-* **The future:**
+**The future:**
 
 * Animations
    * Link up the throttle to throttle movements
