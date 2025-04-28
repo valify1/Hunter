@@ -1,0 +1,7 @@
+model = {
+	lods = {
+		{"Hunter_F6-oblomok-wing-l.edm", 300};
+                {"Hunter_F6-oblomok-wing-r.edm", 5000};
+	};
+	
+}
