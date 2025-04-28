@@ -5,30 +5,27 @@ Whats included
 * Hunter F6
    * Custom SFM (Has not been tested in formation)
    * Custom Smoke System (Bi-colour smoke)
-8K external textures
-Custom HUD (not on a real hunter I know)
-Control Indicators
+   * 8K external textures
+   * Custom HUD (not on a real hunter I know)
+   * Control Indicators
 
-What's to come for the future:
+**The future:**
 
-Animations
-Link up the throttle to throttle movements
-Make more animations in the cockpit
-Ensure the stick and rudder pedals are animated
-Smoke Indicator
-GPS  similar to the Reds T1(maybe)
+* Animations
+   * Link up the throttle to throttle movements
+   * More cockpti animations 
+   * Ensure the stick and rudder pedals are animated
+   * Smoke Indicator
+   * GPS  similar to the Reds T1(maybe)
 
-External
-Working Strobe lights
-Add cockpit covers
-Complete overhaul of textures
-New pilot model
-New cockpit model (potentially)
-Smoke Tube
+**External**
+   * Working Strobe lights
+   * Add cockpit covers
+   * Complete overhaul of textures
+   * New pilot model
+   * New cockpit model (potentially)
+   * Smoke Tube
 
-Other
-Add a Hunter T7 MOD
-Improve SFM after more testing in formation
 
 Known Bugs:
 
