@@ -1,9 +1,39 @@
-# Hunter
+# Hunter V1.0
 
-The Hawker Hunter is a transonic British jet-powered fighter aircraft that was developed by Hawker Aircraft for the Royal Air Force (RAF) during the late 1940s and early 1950s. It was designed to take advantage of the newly developed Rolls-Royce Avon turbojet engine and the swept wing, and was the first jet-powered aircraft produced by Hawker to be procured by the RAF. On 7 September 1953, the modified first prototype broke the world air speed record for aircraft, achieving a speed of 727.63 mph (1,171.01 km/h; 632.29 kn).
+Whats included 
 
-The single-seat Hunter was introduced to service in 1954 as a manoeuvrable day interceptor aircraft, quickly succeeding first-generation jet fighters in RAF service such as the Gloster Meteor and the de Havilland Venom. The all-weather/night fighter role was filled by the Gloster Javelin. Successively improved variants of the type were produced, adopting increasingly more capable engine models and expanding its fuel capacity amongst other modifications being implemented. Hunters were also used by two RAF display teams: the Black Arrows, who on one occasion looped a record-breaking 22 Hunters in formation, and later the Blue Diamonds, who flew 16 aircraft. The Hunter was also widely exported, serving with a total of 21 overseas air forces.
+Hunter F6
+* Custom SFM (Has not been tested in formation)
+* Custom Smoke System (Bi-colour smoke)
+8K external textures
+Custom HUD (not on a real hunter I know)
+Control Indicators
 
-During the 1960s, following the introduction of the supersonic English Electric Lightning in the interceptor role, the Hunter transitioned to being operated as a fighter-bomber and for aerial reconnaissance missions, using dedicated variants for these purposes. Two-seat variants remained in use for training and secondary roles with the RAF and the Royal Navy until the early 1990s. Sixty years after its original introduction it was still in active service, being operated by the Lebanese Air Force until 2014.
+What's to come for the future:
 
-The Hunter saw combat service in a range of conflicts with several operators, including the Suez Crisis, the Aden Emergency, the Sino-Indian War, the Indo-Pakistani War of 1965, the Indo-Pakistani War of 1971, the Rhodesian Bush War, the Second Congo War, the Six-Day War, the War of Attrition and the Yom Kippur War. Overall, 1,972 Hunters were manufactured by Hawker Aircraft and its successor, Hawker Siddeley, as well as being produced under licence overseas. In British service, the Hunter was replaced in its principal roles by the Lightning, the Hawker Siddeley Harrier and the McDonnell Douglas F-4 Phantom II.
+Animations
+Link up the throttle to throttle movements
+Make more animations in the cockpit
+Ensure the stick and rudder pedals are animated
+Smoke Indicator
+GPS  similar to the Reds T1(maybe)
+
+External
+Working Strobe lights
+Add cockpit covers
+Complete overhaul of textures
+New pilot model
+New cockpit model (potentially)
+Smoke Tube
+
+Other
+Add a Hunter T7 MOD
+Improve SFM after more testing in formation
+
+Known Bugs:
+
+Gear Light Turning on after 1 press (2nd press is required to stay on)
+Not all flight control systems are working (Flaps, left elevator and aileron + front gear)
+Gear Up and Gear Down buttons do not work (Use Gear Up/Down for now, same with flaps)
+
+
