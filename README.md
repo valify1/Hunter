@@ -2,14 +2,14 @@
 
 Whats included 
 
-* Hunter F6
+* **Hunter F6**
    * Custom SFM (Has not been tested in formation)
    * Custom Smoke System (Bi-colour smoke)
    * 8K external textures
    * Custom HUD (not on a real hunter I know)
    * Control Indicators
 
-**The future:**
+* **The future:**
 
 * Animations
    * Link up the throttle to throttle movements
@@ -18,7 +18,7 @@ Whats included
    * Smoke Indicator
    * GPS  similar to the Reds T1(maybe)
 
-**External**
+* **External**
    * Working Strobe lights
    * Add cockpit covers
    * Complete overhaul of textures
