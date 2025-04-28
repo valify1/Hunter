@@ -2,7 +2,7 @@
 
 Whats included 
 
-*Hunter F6
+* Hunter F6
    * Custom SFM (Has not been tested in formation)
    * Custom Smoke System (Bi-colour smoke)
 8K external textures
