@@ -1,3 +1,46 @@
+function m3_Mk6(tbl)--4 � 30mm-Maschinenkanone Royal Small Arms Factory ADEN Mk.2 mit je 150 Schuss Munition
+
+	tbl.category = CAT_GUN_MOUNT 
+	tbl.name 	 = "m3_k6"
+	tbl.supply 	 = 
+	{
+		shells = {"M2_50_aero_AP","M20_50_aero_APIT"},
+		mixes  = {{1,2,2,1,2,2}}, --  
+		count  = 150,
+	}
+	if tbl.mixes then 
+	   tbl.supply.mixes =  tbl.mixes
+	   tbl.mixes	    = nil
+	end
+	tbl.gun = 
+	{
+		max_burst_length = 300,
+		rates 			 = {1200},
+		recoil_coeff 	 = 1,
+		barrels_count 	 = 1,
+	}
+	if tbl.rates then 
+	   tbl.gun.rates    =  tbl.rates
+	   tbl.rates	    = nil
+	end	
+	tbl.ejector_pos 			= tbl.ejector_pos or {-0.4, -1.2, 0.18}
+	tbl.ejector_dir 			= {0,-1,0}
+	tbl.supply_position  		= tbl.supply_position   or {0,  0.3, -0.3}
+	tbl.aft_gun_mount 			= false
+	tbl.effective_fire_distance = 1000
+	tbl.drop_cartridge 			= 0
+	tbl.muzzle_pos				= tbl.muzzle_pos 		 or  {0,0,0} -- all position from connector
+	tbl.muzzle_pos_connector	= tbl.muzzle_pos_connector 		 or  "Gun_point" -- all position from connector
+	tbl.azimuth_initial 		= tbl.azimuth_initial    or 0   
+	tbl.elevation_initial 		= tbl.elevation_initial  or 0   
+	if  tbl.effects == nil then
+		tbl.effects = {{ name = "FireEffect"     , arg 		 = tbl.effect_arg_number or 436 },
+					   { name = "HeatEffectExt"  , shot_heat = 7.823, barrel_k = 0.462 * 2.7, body_k = 0.462 * 14.3 },
+					   { name = "SmokeEffect"}}
+	end
+	return declare_weapon(tbl)
+end
+
 local tipsLeft 		= {
 	{ CLSID = "{AIS_ASQ_T50}" ,arg_value = 0.0, attach_point_position = {0.30,  0.0,  0.0}},-- ACMI pod
 	{ CLSID = "{9BFD8C90-F7AE-4e90-833B-BFD0CED0E536}", arg_value = 0.0},--Aim-9P
@@ -135,32 +178,22 @@ F6 =  {
 	},
 	
 	-- add model draw args for network transmitting to this draw_args table (32 limit)
-	net_animation ={38, -- canopy
-					0, -- gear
-					3,
-					5,
-					9,
-					10, 
-					11, -- aileron
-					15, -- stabilizer
-					20,  -- flaps
-					21, -- air brake
-					7, -- rat
-					13, -- prop slow
-					14, -- prop fast
-					130 -- Nose Light
-					},
+	
 					
 	mapclasskey 		= "P0091000025",
 	attribute  			= {wsType_Air, wsType_Airplane, wsType_Fighter, WSTYPE_PLACEHOLDER ,"Battleplanes",},
 	Categories 			= {"{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}", "Interceptor",},	
-	-------------------------
-	M_empty 					= 3340, -- kg
-	M_nominal 					= 4707, -- kg
-	M_max 						= 5785, -- kg
-	M_fuel_max 					= 1549, -- kg --
-	H_max 					 	= 12800, -- m
-	average_fuel_consumption 	= 0.4, -- this is highly relative, but good estimates are 36-40l/min = 28-31kg/min = 0.47-0.52kg/s -- 45l/min = 35kg/min = 0.583kg/s
+	----- Weight & Fuel Characteristics  ------
+    
+	M_empty						=	17661,	
+	M_fuel_max					=	10245.529841877513,	-- kg (Maximum Internal Fuel Only)
+	M_nominal					=	17661 + 10245.529841877513, -- kg (Empty Plus Full Internal Fuel)
+    -- Maximum takeoff weight 81,0000 LBS = 36741 KG
+	M_max						=	36741,		   -- kg (Maximum Take Off Weight - Rolling)
+	H_max						=	18300,		   -- m  (Maximum Operational Ceiling)
+    -- Currently around 132 knots - okay?
+	CAS_min						=	58,			   -- Minimum CAS speed (m/s) (for AI)
+	average_fuel_consumption	=	0.271,
 	CAS_min 					= 50, -- if this is not OVERAL FLIGHT TIME, but jus LOITER TIME, than it should be 10-15 minutes.....CAS capability in minute (for AI)
 	V_opt 						= 300,-- Cruise speed (for AI)
 	V_take_off 					= 57, -- Take off speed in m/s (for AI)
@@ -181,17 +214,19 @@ F6 =  {
 	has_afteburner 				= false, -- AFB yes/no
 	has_speedbrake 				= true, -- Speedbrake yes/no
 	
-	nose_gear_pos 				= {  4.335,	-1.63,	0.000}, -- nosegear coord 
-	nose_gear_amortizer_direct_stroke    =  1.60 - 1.60,  -- down from nose_gear_pos !!!
-	nose_gear_amortizer_reversal_stroke  =  1.60 - 1.60,  -- up
-	nose_gear_amortizer_normal_weight_stroke = -0.100,
+	nose_gear_pos 				                = {3.745, -1.705, 0},   -- position of gear
+	    nose_gear_amortizer_direct_stroke   		=  0.000,  -- down from nose_gear_pos
+	    nose_gear_amortizer_reversal_stroke  		=  -0.160,  -- up 0.161m 3D Modell MK6
+	    nose_gear_amortizer_normal_weight_stroke 	=  -0.110,   -- up
+	    nose_gear_wheel_diameter 	                =  0.455, -- 3D Modell MK6
+
+	    main_gear_pos 						 	    = {-0.790, -1.730, 2.300}, -- changed back
+	    main_gear_amortizer_direct_stroke	 	    =  0.000, -- down from main_gear_pos
+	    main_gear_amortizer_reversal_stroke  	    =  -0.240, -- up 0.24m 3D Modell MK6
+	    main_gear_amortizer_normal_weight_stroke    =  -0.170,-- down from main_gear_pos
+	    main_gear_wheel_diameter 				    =   0.750, -- 3D Modell MK6
 	
-	main_gear_pos 				= { -0.825,	-1.58,	0}, -- main gear coords -0.973,	-1.72,	1.27  forward, Height, y -172
-	main_gear_amortizer_direct_stroke	 =  1.370 - 1.370, --  down from main_gear_pos !!!
-	main_gear_amortizer_reversal_stroke  = 	1.270 - 1.370, --  up 
-	main_gear_amortizer_normal_weight_stroke = -0.200,  -- bouge du .196 au .200
 	
-	tand_gear_max 				= 0.4,   -- 0.4
 	
 	tanker_type 				= 0, -- Tanker type if the plane is airrefuel capable
 	wing_area 					= 17.5, -- wing area in m2
@@ -253,40 +288,51 @@ F6 =  {
 
 	fires_pos = 
 		{
-			[1] = 	{-2.117,	-0.9,	0},           -- {-2.117,	-0.9,	0}, Far tail
-			[2] = 	{-1.584,	0.176,	2.693},
-			[3] = 	{-1.645,	0.213,	-2.182},
-			[4] = 	{-0.82,	0.265,	2.774},     -- Wing center Right? {-0.82,	0.265,	2.774},
-			[5] = 	{-0.82,	0.265,	-2.774},    -- Wing center Left?  {-0.82,	0.265,	-2.774},
-			[6] = 	{-0.82,	0.255,	4.274},     -- Wing outer Right? {-0.82,	0.255,	4.274},
-			[7] = 	{-0.82,	0.255,	-4.274},    -- Wing outer Left?  {-0.82,	0.255,	-4.274},
-			[8] = 	{-7.0,	-0.427,	0.6},     -- High Altitude Contrails
-			[9] = 	{-7.0,	-0.427,	-0.6},     -- High Altitude Contrails
-			[10] = 	{0.304,	-0.748,	0.442},     -- Right Engine? {0.304,	-0.748,	0.442},
-			[11] = 	{0.304,	-0.748,	-0.442},    -- Left Engine? {0.304,	-0.748,	-0.442},
+			[1] = 	{-0.707,	0.553,	-0.213},	-- After maingear, fuselage bottom
+			[2] = 	{-0.037,	0.285,	1.391},		-- Wing inner Left top **
+			[3] = 	{-0.037,	0.285,	-1.391},	-- Wing inner Right bottom **
+			[4] = 	{-0.82,	0.265,	2.774},			-- Wing middle Left bottom **
+			[5] = 	{-0.82,	0.265,	-2.774},		-- Wing middle Right top **
+			[6] = 	{-0.82,	0.255,	4.274},			-- Wing outer Left **
+			[7] = 	{-0.82,	0.255,	-4.274},		-- Wing outer Right
+			[8] = 	{-5.003,	0.261,	0},			-- Engine damage big
+			[9] = 	{-5.003,	0.261,	0},			-- Engine damage small
+			[10] = 	{-0.707,	0.453,	1.036},		-- Air intake bottom L
+			[11] = 	{-0.707,	0.453,	-1.036},	-- Air intake bottom R
 		}, -- end of fires_pos
 	
+		effects_presets = {
+			{effect = "OVERWING_VAPOR", file = current_mod_path.."/Effects/Hunter_overwingVapor.lua"},
+		},
 	
-	-- Countermeasures
-	SingleChargeTotal	 	= 60,
-	CMDS_Incrementation 	= 15,
-	ChaffDefault 			= 30, 
-	ChaffChargeSize 		= 1,
-	FlareDefault 			= 15, 
-	FlareChargeSize 		= 2,
-	CMDS_Edit 				= true,
-	chaff_flare_dispenser 	= {
-		[1] = 
+		chaff_flare_dispenser = 
 		{
-			dir =  {0, -1, -1},
-			pos =  {-3, -1, 2},
-		}, -- end of [1]
-		[2] = 
-		{
-			dir =  {0, -1, 1},
-			pos =  {-3, -1, -2},
-		}, -- end of [2]
-	}, -- end of chaff_flare_dispenser
+			[1] = 
+			{
+				dir = 	{0,	-1,	0},
+				pos = 	{-1.185,	-1.728,	-0.878},
+			}, -- end of [1]
+			[2] = 
+			{
+				dir = 	{0,	-1,	0},
+				pos = 	{-1.185,	-1.728,	0.878},
+			}, -- end of [2]
+		}, -- end of chaff_flare_dispenser
+
+        -- Countermeasures
+passivCounterm 		= {
+CMDS_Edit 			= true,
+SingleChargeTotal 	= 60,
+chaff 				= {default = 30, increment = 30, chargeSz = 1},
+flare 				= {default = 15, increment = 15, chargeSz = 2}
+ },
+	
+	
+        CanopyGeometry 	= {
+            azimuth 	= {-145.0, 145.0},-- pilot view horizontal (AI)
+            elevation 	= {-50.0, 90.0}-- pilot view vertical (AI)
+        },
+
 
 	--sensors
 	
@@ -314,16 +360,56 @@ F6 =  {
             { id = 'r_engine', 		  label = _('R-ENGINE'), 		enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },
 	},
 	
-	Guns = {gun_mount("ADEN", {
-			count = 150,  -- 150
-			muzzle_pos_connector = "GUN_POINT",
-			muzzle_pos 		  = {-0.5, 0, 0},      -- {0, -0.5, -1}
-			elevation_initial = 2.000,
-			supply_position   = {1, 0, 0},
-			effect_arg_number = 350,
-			 }
-			)
-			},
+	Guns = {
+		m3_Mk6({
+			muzzle_pos_connector = "Gun_point_0",
+		--	muzzle_pos 			 = {4.048, -0.145, 0.072},
+		--	effect_arg_number	 = 350,
+			rates				 = {1249},
+			mixes				 = {{2,1,1,1,1,1}},
+			azimuth_initial		 = 0,
+			elevation_initial	 = 0,
+			supply_position		 = {3.0, -0.6, 0.2},
+			ejector_pos			 = {3.0, 0.0 ,0.2},
+		--	ejector_pos_connector = "ejector_1",
+			}),
+			m3_Mk6({
+			muzzle_pos_connector = "Gun_point_1",
+		--	muzzle_pos 			 = {4.048, -0.145, -0.072},
+		--	effect_arg_number	 = 433,
+			rates				 = {1190},
+			mixes				 = {{1,1,2,1,1,1}},
+			azimuth_initial		 = 0,
+			elevation_initial	 = 0,
+			supply_position		 = {3.0, -0.6, -0.2},
+			ejector_pos			 = {3.0, 0.0 ,-0.2},
+		--	ejector_pos_connector = "ejector_2",
+			}),
+			m3_Mk6({
+			muzzle_pos_connector = "Gun_point_2",
+		--	muzzle_pos 			 = {4.048, -0.145, -0.072},
+		--	effect_arg_number	 = 433,
+			rates				 = {1190},
+			mixes				 = {{1,1,2,1,1,1}},
+			azimuth_initial		 = 0,
+			elevation_initial	 = 0,
+			supply_position		 = {3.0, -0.6, -0.2},
+			ejector_pos			 = {3.0, 0.0 ,-0.2},
+		--	ejector_pos_connector = "ejector_2",
+			}),
+			m3_Mk6({
+			muzzle_pos_connector = "Gun_point_3",
+		--	muzzle_pos 			 = {4.048, -0.145, -0.072},
+		--	effect_arg_number	 = 433,
+			rates				 = {1190},
+			mixes				 = {{1,1,2,1,1,1}},
+			azimuth_initial		 = 0,
+			elevation_initial	 = 0,
+			supply_position		 = {3.0, -0.6, -0.2},
+			ejector_pos			 = {3.0, 0.0 ,-0.2},
+		--	ejector_pos_connector = "ejector_2",
+			}),
+		},
 	
 			stores_number =	3,  
 			Pylons = {
@@ -493,44 +579,49 @@ F6 =  {
 	},
 	--damage , index meaning see in  Scripts\Aircrafts\_Common\Damage.lua
 	Damage = {
-				[1]		= {critical_damage = 5, args = {150}}, -- nose left
-				[2]		= {critical_damage = 5, args = {149}}, -- nose right
-				[3]		= {critical_damage = 3, args = {296}}, -- cockpit 
-				[4]		= {critical_damage = 5, args = {154}}, -- cabin left
-				[5]		= {critical_damage = 5, args = {153}}, -- cabin right
-				[11]	= {critical_damage = 3, args = {147}}, -- engine l
-				[12]	= {critical_damage = 3, args = {148}}, -- engine 2
-				[23]	= {critical_damage = 7, args = {223}, deps_cells = {25}}, -- wing out left
-				[24]	= {critical_damage = 7, args = {213}, deps_cells = {26}}, -- wing out right 
-				[25]	= {critical_damage = 3, args = {226}}, -- eleron left 
-				[26]	= {critical_damage = 4, args = {216}}, -- eleron right
-				[29]	= {critical_damage = 7, args = {224}, deps_cells = {23, 25, 33, 37}}, -- wing center left 
-				[30]	= {critical_damage = 7, args = {214}, deps_cells = {24, 26, 38}}, -- wing center right 
-				[33]	= {critical_damage = 4, args = {232}}, -- slat left
-				[34]	= {critical_damage = 4, args = {222}}, -- slat right
-				[35]	= {critical_damage = 7, args = {225}, deps_cells = {29, 23, 25, 33, 37}}, -- wing in left 
-				[36]	= {critical_damage = 7, args = {215}, deps_cells = {30, 24, 26, 34, 38}}, -- wing in right 
-				[37]	= {critical_damage = 4, args = {227}}, -- flap in left 
-				[38]	= {critical_damage = 3, args = {217}}, -- flap in right 
-				[39]	= {critical_damage = 4, args = {242}}, -- fin top left
-				[40]	= {critical_damage = 4, args = {242}}, -- fin top right
-				[43]	= {critical_damage = 6, args = {243}, deps_cells = {39, 54, 45, 46, 49, 50}}, -- fin bottom left
-				[45]	= {critical_damage = 4, args = {235}}, -- stabilizer out left
-				[46]	= {critical_damage = 4, args = {233}}, -- stabilizer out right
-				[47]	= {critical_damage = 6, args = {236}, deps_cells = {49}}, -- stabilizer in left
-				[48]	= {critical_damage = 6, args = {234}, deps_cells = {50}}, -- stabilizer in right
-				[49]	= {critical_damage = 3, args = {240}}, -- elevator out left
-				[50]	= {critical_damage = 3, args = {238}}, -- elevator out right				
-				[54]	= {critical_damage = 3, args = {247}}, -- rudder right
-				[55]	= {critical_damage = 7, args = {81}, deps_cells = {43, 54, 45, 46}}, -- tail 				
-				[56]	= {critical_damage = 5, args = {158}}, -- tail left
-				[57]	= {critical_damage = 5, args = {157}}, -- tail right				
-				[59]	= {critical_damage = 5, args = {148}}, -- nose bottom 				
-				[82]	= {critical_damage = 5, args = {152}}, -- fuselage bottom
-				[83]	= {critical_damage = 2, args = {134}}, -- wheel nose 
-				[84]	= {critical_damage = 3, args = {136}}, -- wheel left 
-				[85]	= {critical_damage = 3, args = {135}}, -- wheel right 
-	},
+		[0]  = {critical_damage = 5,  args = {146}},--NOSE_CENTER
+		[1]  = {critical_damage = 3,  args = {296}},--NOSE_LEFT_SIDE
+		[2]  = {critical_damage = 3,  args = {297}},--NOSE_RIGHT_SIDE
+		[3]  = {critical_damage = 8,  args = {65}}, --CABINA
+		[4]  = {critical_damage = 2,  args = {298}},--CABIN_LEFT_SIDE
+		[5]  = {critical_damage = 2,  args = {301}},--CABIN_RIGHT_SIDE
+		[7]  = {critical_damage = 2,  args = {249}},--GUN
+		[8]  = {critical_damage = 3,  args = {265}},--FRONT_GEAR_BOX
+		[9]  = {critical_damage = 3,  args = {154}},--FUSELAGE_LEFT_SIDE
+		[10] = {critical_damage = 3,  args = {153}},--FUSELAGE_RIGHT_SIDE
+		[11] = {critical_damage = 1,  args = {167}},--ENGINE_L_IN
+		[12] = {critical_damage = 1,  args = {161}},--ENGINE_R_IN
+		[13] = {critical_damage = 2,  args = {169}},--MTG_L_BOTTOM
+		[14] = {critical_damage = 2,  args = {163}},--MTG_R_BOTTOM
+		[15] = {critical_damage = 2,  args = {267}},--LEFT_GEAR_BOX
+		[16] = {critical_damage = 2,  args = {266}},--RIGHT_GEAR_BOX
+		[17] = {critical_damage = 2,  args = {168}},--MTG_L  (ENGINE)
+		[18] = {critical_damage = 2,  args = {162}},--MTG_R  (ENGINE)
+		[20] = {critical_damage = 2,  args = {183}},--AIR_BRAKE_R
+		[23] = {critical_damage = 5,  args = {223}},--WING_L_OUT
+		[24] = {critical_damage = 5,  args = {213}},--WING_R_OUT
+		[25] = {critical_damage = 2,  args = {226}},--ELERON_L
+		[26] = {critical_damage = 2,  args = {216}},--ELERON_R
+		[29] = {critical_damage = 5,  args = {224}, deps_cells = {23, 25}},--WING_L_CENTER
+		[30] = {critical_damage = 5,  args = {214}, deps_cells = {24, 26}},--WING_R_CENTER
+		[35] = {critical_damage = 6,  args = {225}, deps_cells = {23, 29, 25, 37}},--WING_L_IN
+		[36] = {critical_damage = 6,  args = {215}, deps_cells = {24, 30, 26, 38}},--WING_R_IN
+		[37] = {critical_damage = 2,  args = {228}},--FLAP_L
+		[38] = {critical_damage = 2,  args = {218}},--FLAP_R
+		[39] = {critical_damage = 2,  args = {244}, deps_cells = {53}},--FIN_L_TOP
+		[40] = {critical_damage = 2,  args = {241}, deps_cells = {54}},--FIN_R_TOP
+		[43] = {critical_damage = 2,  args = {243}, deps_cells = {39, 53}},--FIN_L_BOTTOM
+		[44] = {critical_damage = 2,  args = {242}, deps_cells = {40, 54}},--FIN_R_BOTTOM
+		[51] = {critical_damage = 2,  args = {240}},--ELEVATOR_L
+		[52] = {critical_damage = 2,  args = {238}},--ELEVATOR_R
+		[53] = {critical_damage = 2,  args = {248}},--RUDDER_L
+		[54] = {critical_damage = 2,  args = {247}},--RUDDER_R
+		[56] = {critical_damage = 2,  args = {158}},--TAIL_LEFT_SIDE
+		[57] = {critical_damage = 2,  args = {157}},--TAIL_RIGHT_SIDE
+		[59] = {critical_damage = 3,  args = {148}},--NOSE_BOTTOM
+		[61] = {critical_damage = 2,  args = {147}},--FUEL_TANK_F
+		[82] = {critical_damage = 2,  args = {152}},--FUSELAGE_BOTTOM
+		},
 	
 	DamageParts = 
 	{  

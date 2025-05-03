@@ -16,7 +16,6 @@ devices["COMMANDS"]					= counter()--8
 devices["HYDRAULIC_SYSTEM"]			= counter()--9
 devices["AIRBRAKE"]					= counter()--10
 devices["SYSTEMS"]					= counter()--11
-devices["LIGHT_SYSTEM"]				= counter()--12
 devices["FUEL_SYSTEM"]				= counter()--13
 devices["GYRO_SYSTEM"]				= counter()--14
 devices["START_PANEL"]				= counter()--15

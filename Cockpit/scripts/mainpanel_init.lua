@@ -11,7 +11,7 @@ ambient_color_from_panels	 = {35, 25, 25}
 dusk_border					 = 0.4
 draw_pilot					 = false
 
-external_model_canopy_arg	 = 181
+external_model_canopy_arg	 = 38
 
 use_external_views = false 
 cockpit_local_point = {3.595,	0.725,	-0.1}  -- position cockpit 2.731,	-0.8,	0

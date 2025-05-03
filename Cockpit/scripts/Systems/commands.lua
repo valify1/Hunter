@@ -68,7 +68,6 @@ dev:listen_command(Gear_Up_Switch)
 dev:listen_command(BrakeOn)
 dev:listen_command(BrakeOff)
 
-dev:listen_command(FlapsMid)
 dev:listen_command(FlapsUp)
 dev:listen_command(FlapsDown)
 
@@ -103,17 +102,15 @@ function SetCommand(command,value)
 	-- Flaps command
 	if (command == FlapsUp and P_HYD2:get()>10) or (command == FlapsUp_Switch and P_HYD2:get()>10) then
 		flaps_command = 0 -- UP instruction
-		D_flaps_command:set(0)
+		D_flaps_command:set(0.0)
 	end
 	
-	if (command == FlapsMid and P_HYD2:get()>10) or (command == FlapsMid_Switch and P_HYD2:get()>10) then
-		flaps_command = 0.5 -- Mid instruction
-		D_flaps_command:set(0.5)
+
 	end
 	
 	if (command == FlapsDown and P_HYD2:get()>10) or (command == FlapsDown_Switch and P_HYD2:get()>10) then
-		flaps_command = 1 -- DOWN instruction
-		D_flaps_command:set(1)
+		flaps_command = 0.4 -- DOWN instruction
+		D_flaps_command:set(0.0)
 	end
 
 	-- Trim command
@@ -168,14 +165,7 @@ function update()
 		flaps_state = flaps_state
 	end
 	
-	--Mid instruction
-	if (flaps_command == 0.5 and  flaps_state < 0.5) then
-		flaps_state = flaps_state + 0.005 
-	else 
-		if (flaps_command == 0.5 and  flaps_state > 0.5) then
-			flaps_state = flaps_state - 0.005
-		end
-	end
+
 	
 	-- TNS Light
 	local ias = sensor_data.getIndicatedAirSpeed()*1.9438
@@ -212,16 +202,12 @@ function update()
 		L_FLAPS:set(0)
 	end
 	
-	set_aircraft_draw_argument_value(20,flaps_state)
-	set_aircraft_draw_argument_value(9,flaps_state)
-	set_aircraft_draw_argument_value(10,flaps_state)
+	
 	flaps_status:set(flaps_state)
 	D_TrimPicth:set(TrimIndicator)
-	profondeur:set(get_aircraft_draw_argument_value(15))
+	
 	Gear_status:set(Gear_State)
-	set_aircraft_draw_argument_value(0,Gear_State)
-	set_aircraft_draw_argument_value(3,Gear_State)
-	set_aircraft_draw_argument_value(5,Gear_State)
-	AircraftIsOnGround:set(get_aircraft_draw_argument_value(4))
+
+	
 	
 end

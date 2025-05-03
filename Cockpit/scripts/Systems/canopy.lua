@@ -64,8 +64,7 @@ function update()
 		
 		CANOPY_STATUS:set(CANOPYSTATUS)
 		
-		set_aircraft_draw_argument_value(38,CANOPYSTATUS)
-		set_aircraft_draw_argument_value(40,CANOPYSTATUS)	
+
 
 	end
 end

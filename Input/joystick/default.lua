@@ -94,5 +94,8 @@ join(res.axisCommands,{
 --{action = iCommandPlaneBase_DistanceAbs 	, name = 'Base/Distance'},
 {action = iCommandPlaneTrimPitchAbs, name = "Trim Elevator"},
 {action = iCommandPlaneTrimRollAbs, name = 'Trim Aileron'},
+{action = iCommandWheelBrake,		name = _('Wheel Brake')},
+{action = iCommandLeftWheelBrake,	name = _('Wheel Brake Left')},
+{action = iCommandRightWheelBrake,	name = _('Wheel Brake Right')},
 })
 return res

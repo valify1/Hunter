@@ -93,6 +93,6 @@ function update()
 		airbrake_conso:set(0)
 	end
 	
-	set_aircraft_draw_argument_value(182,ABRAKE_STATE)
+	
 	
 end

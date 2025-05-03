@@ -19,12 +19,12 @@ creators[devices.COMMANDS]	 	= {"avLuaDevice"			,LockOn_Options.script_path.."Sy
 creators[devices.HYDRAULIC_SYSTEM]	= {"avLuaDevice"		,LockOn_Options.script_path.."Systems/hydraulic_system.lua"}
 creators[devices.AIRBRAKE]			= {"avLuaDevice"		,LockOn_Options.script_path.."Systems/airbrake.lua"}
 creators[devices.SYSTEMS]			= {"avLuaDevice"		,LockOn_Options.script_path.."Systems/systems.lua"}
-creators[devices.LIGHT_SYSTEM]		= {"avLuaDevice"		,LockOn_Options.script_path.."Systems/light_system.lua"}
 creators[devices.FUEL_SYSTEM]		= {"avLuaDevice"		,LockOn_Options.script_path.."Systems/fuel_system.lua"}
 creators[devices.GYRO_SYSTEM]		= {"avLuaDevice"		,LockOn_Options.script_path.."Systems/gyro_system.lua"}
 creators[devices.START_PANEL]		= {"avLuaDevice"		,LockOn_Options.script_path.."Systems/start_panel.lua"}
 creators[devices.CANOPY]			= {"avLuaDevice"	    ,LockOn_Options.script_path.."Systems/canopy.lua"}
 creators[devices.Smoke]         = {"avSimpleWeaponSystem"   ,LockOn_Options.script_path.."Smoke/Smoke.lua"}
+
 
 --RADAR OFF creators[devices.RADAR]			 = {"avSimpleRadar"			,LockOn_Options.script_path.."RADAR/Device/init.lua"}
 

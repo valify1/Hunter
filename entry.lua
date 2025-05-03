@@ -55,12 +55,17 @@ mount_vfs_texture_path  (current_mod_path.."/Cockpit/Resources/Model/Textures/Co
 mount_vfs_model_path	(current_mod_path.."/Cockpit/Resources/Model/Shape")
 mount_vfs_sound_path    (current_mod_path.."/Sounds")
 
--- Option Cockpit operationnel, HUD partiel
-make_flyable('Hunter F6'	, current_mod_path..'/Cockpit/Scripts/',nil, current_mod_path..'/comm.lua')
+
+
+
 
 dofile(current_mod_path.."/Views.lua")
 dofile(current_mod_path..'/Hunter.lua')
 
-make_view_settings('Hunter F6', ViewSettings, SnapViews)
+
+
+F15FM.old = 6
+make_flyable('Hunter F6', current_mod_path..'/Cockpit/Scripts/', F15FM, current_mod_path..'/comm.lua')
+
 
 plugin_done()-- finish declaration , clear temporal data
