@@ -39,20 +39,22 @@ New features coming to the Hunter in the next update:
 
 External:
 
-Flaps Working set to 38 degrees
-Rudder and all control surface animations are working
-Gear Light not flickering
-Fitted F-15C EFM onto the jet
-F4 view position fixed
+* Flaps Working set to 38 degrees
+* Rudder and all control surface animations are working
+* Gear Light not flickering 
+* Fitted F-15C EFM onto the jet
+* F4 view position fixed
 
 Internal:
 
-Throttle animation working
-Fixed view  position (can now look over the wings)
+* Throttle animation working
+* Fixed view  position (can now look over the wings)
 
 Controls:
 
-Flap Up working
-Flap Down Working
-Added Wheel Break Left and Wheel Break Right
-Gear Up and Gear Down added
+* Flap Up working
+* Flap Down Working
+* Added Wheel Break Left and Wheel Break Right 
+* Gear Up and Gear Down added
+
+This will be released on the GitHub when its working properly
