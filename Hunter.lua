@@ -58,7 +58,7 @@ local tipsLeft 		= {
 	--{ CLSID = "{907D835F-E650-4154-BAFD-C656882555C0}" ,arg_value = 0.0}, -- lau_88 AGM-65K
 	{ CLSID = "{LAU3_FFAR_MK1HE}"					   	,arg_value = 0.0},--19xFFAR Mk1-HE Rockets
 	{ CLSID = "{LAU3_FFAR_MK5HEAT}"					   	,arg_value = 0.0},--19xFFAR Mk1-HEAT Rockets
-	{ CLSID = "{VSN_Mk6500L_ptb}" ,arg_value = 0.0,attach_point_position = {0.0, 0.0 , 0.0 } },--Tank Mk6
+	{ CLSID = "{Hunter_F6_500L_ptb}" ,arg_value = 0.0,attach_point_position = {0.0, 0.0 , 0.0 } },--Tank Mk6
 	{ CLSID = "<CLEAN>"								   ,arg_value = 1},
 }
 
@@ -79,7 +79,7 @@ local tipsRight 		= {
 	--{ CLSID = "{907D835F-E650-4154-BAFD-C656882555C0}" ,arg_value = 0.0}, -- lau_88 AGM-65K
 	{ CLSID = "{LAU3_FFAR_MK1HE}"					   	,arg_value = 0.0},--19xFFAR Mk1-HE Rockets
 	{ CLSID = "{LAU3_FFAR_MK5HEAT}"					   	,arg_value = 0.0},--19xFFAR Mk1-HEAT Rockets
-	{ CLSID = "{VSN_Mk6500R_ptb}" ,arg_value = 0.0,attach_point_position = {0.0, 0.0 , 0.0 } },--Tank Mk6
+	{ CLSID = "{Hunter_F6_500R_ptb}" ,arg_value = 0.0,attach_point_position = {0.0, 0.0 , 0.0 } },--Tank Mk6
 	{ CLSID = "<CLEAN>"								   ,arg_value = 1},
 }
 
@@ -99,8 +99,8 @@ local outboardLeft 	= {
 	--{ CLSID = "{907D835F-E650-4154-BAFD-C656882555C0}" ,arg_value = 0.0}, -- lau_88 AGM-65K
 	{ CLSID = "{LAU3_FFAR_MK1HE}"					   	,arg_value = 0.0},--19xFFAR Mk1-HE Rockets
 	{ CLSID = "{LAU3_FFAR_MK5HEAT}"					   	,arg_value = 0.0},--19xFFAR Mk1-HEAT Rockets
-	{ CLSID = "{VSN_Mk6500L_ptb}" ,arg_value = 0.0,attach_point_position = {0.0, 0.0 , 0.0 } },--Tank Mk6
-	{ CLSID = "{VSN_Mk61000L_ptb}" ,arg_value = 0.7,attach_point_position = {0.0, 0.0 , 0.0 } },--Tank Mk6 0.5 or 0.7
+	{ CLSID = "{Hunter_F6_500L_ptb}" ,arg_value = 0.0,attach_point_position = {0.0, 0.0 , 0.0 } },--Tank Mk6
+	{ CLSID = "{Hunter_F6_1000L_ptb}" ,arg_value = 0.7,attach_point_position = {0.0, 0.0 , 0.0 } },--Tank Mk6 0.5 or 0.7
 	{ CLSID = "<CLEAN>"								   ,arg_value = 1},
 }
 
@@ -120,8 +120,8 @@ local outboardRight 	= {
 	--{ CLSID = "{907D835F-E650-4154-BAFD-C656882555C0}" ,arg_value = 0.0}, -- lau_88 AGM-65K
 	{ CLSID = "{LAU3_FFAR_MK1HE}"					   	,arg_value = 0.0},--19xFFAR Mk1-HE Rockets
 	{ CLSID = "{LAU3_FFAR_MK5HEAT}"					   	,arg_value = 0.0},--19xFFAR Mk1-HEAT Rockets
-	{ CLSID = "{VSN_Mk6500R_ptb}" ,arg_value = 0.0,attach_point_position = {0.0, 0.0 , 0.0 } },--Tank Mk6
-	{ CLSID = "{VSN_Mk61000R_ptb}" ,arg_value = 0.7,attach_point_position = {0.0, 0.0 , 0.0 } },--Tank Mk6 0.5 or 0.7
+	{ CLSID = "{Hunter_F6_500R_ptb}" ,arg_value = 0.0,attach_point_position = {0.0, 0.0 , 0.0 } },--Tank Mk6
+	{ CLSID = "{Hunter_F6_1000R_ptb}" ,arg_value = 0.7,attach_point_position = {0.0, 0.0 , 0.0 } },--Tank Mk6 0.5 or 0.7
 	{ CLSID = "<CLEAN>"								   ,arg_value = 1},
 }
 
@@ -141,7 +141,7 @@ local inboard 	= {
 	{ CLSID = "{69DC8AE7-8F77-427B-B8AA-B19D3F478B66}" ,arg_value = 0.0}, -- LAU-117 AGM-65K
 	--{ CLSID = "{D7670BC7-881B-4094-906C-73879CF7EB28}" ,arg_value = 0.0}, -- lau_88 AGM-65K
 	--{ CLSID = "{907D835F-E650-4154-BAFD-C656882555C0}" ,arg_value = 0.0}, -- lau_88 AGM-65K
-	--{ CLSID = "<CLEAN>"								   	,arg_value = 1},
+	{ CLSID = "<CLEAN>"								   	,arg_value = 1},
 }
 
 
@@ -274,7 +274,7 @@ F6 =  {
 		{
 			ejection_seat_name = "pilot+ejectionseat",
 			drop_canopy_name = "Front_Canopy",
-			pos =  {3.595,	0.725,	-0.1},     --  {2.831,	-0.7,	0}, altitude =2eme parametre
+			pos =  {3.302,0.763,0.000},     --  {2.831,	-0.7,	0}, altitude =2eme parametre
 			canopy_pos = {0,	0,	0},
 		}, -- end of [1]
 		[2] = 
@@ -328,37 +328,41 @@ flare 				= {default = 15, increment = 15, chargeSz = 2}
  },
 	
 	
-        CanopyGeometry 	= {
-            azimuth 	= {-145.0, 145.0},-- pilot view horizontal (AI)
-            elevation 	= {-50.0, 90.0}-- pilot view vertical (AI)
-        },
+ CanopyGeometry 	= {
+	azimuth 	= {-145.0, 145.0},-- pilot view horizontal (AI)
+	elevation 	= {-50.0, 90.0}-- pilot view vertical (AI)
+},
 
+Sensors = {
+RADAR 			= "AN/APQ-159", -- angepasst F-100 kein RADAR
+RWR 			= "Abstract RWR"--F15
+},
+Countermeasures = {
+ECM 			= "AN/ALQ-135" -- no ECM
+},
+Failures = {
+	{ id = 'asc', 		label = _('ASC'), 		enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },
+	{ id = 'autopilot', label = _('AUTOPILOT'), enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },
+	{ id = 'hydro',  	label = _('HYDRO'), 	enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },
+	{ id = 'l_engine',  label = _('L-ENGINE'), 	enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },
+	{ id = 'r_engine',  label = _('R-ENGINE'), 	enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },
+	{ id = 'radar',  	label = _('RADAR'), 	enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },
+  --{ id = 'eos',  		label = _('EOS'), 		enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },
+  --{ id = 'helmet',  	label = _('HELMET'), 	enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },
+	{ id = 'mlws',  	label = _('MLWS'), 		enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },
+	{ id = 'rws',  		label = _('RWS'), 		enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },
+	{ id = 'ecm',   	label = _('ECM'), 		enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },
+	{ id = 'hud',  		label = _('HUD'), 		enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },
+	{ id = 'mfd',  		label = _('MFD'), 		enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },		
+},
+HumanRadio = {
+frequency 		= 251.0,  -- Radio Freq angepasst F104
+editable 		= true,
+minFrequency	= 225.000, -- angepasst F104
+maxFrequency 	= 399.979, -- angepasst F104
+modulation 		= MODULATION_AM
+},
 
-	--sensors
-	
-	detection_range_max		 = 60,
-	radar_can_see_ground 	 = true, -- this should be examined (what is this exactly?)
-	CanopyGeometry = {
-		azimuth   = {-160.0, 160.0}, -- pilot view horizontal (AI)
-		elevation = {-50.0, 90.0} -- pilot view vertical (AI)
-	},
-	Sensors = {
---[[		RWR = "Abstract RWR", -- RWR type
-		RADAR = "N-019", -- Radar type
-]]	
-	},
-	HumanRadio = {
-		frequency = 127.5,  -- Radio Freq
-		editable = true,
-		minFrequency = 100.000,
-		maxFrequency = 156.000,
-		modulation = MODULATION_AM
-	},
-	
-	Failures = {
-            { id = 'l_engine',		  label = _('L-ENGINE'), 		enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },
-            { id = 'r_engine', 		  label = _('R-ENGINE'), 		enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },
-	},
 	
 	Guns = {
 		m3_Mk6({
@@ -442,7 +446,7 @@ flare 				= {default = 15, increment = 15, chargeSz = 2}
 			pylon(3, 0, 0, 0, 0,
 				{
 					arg = 309,
-					arg_value = 1,
+					arg_value = 0,
 					DisplayName = "1",
 					use_full_connector_position = true,
 					connector = "Pylon2",
@@ -452,7 +456,7 @@ flare 				= {default = 15, increment = 15, chargeSz = 2}
 			pylon(4, 0, 0, 0, 0,
 				{
 					arg = 312,
-					arg_value = 1,
+					arg_value = 0,
 					DisplayName = "2",
 					use_full_connector_position = true,
 					connector = "Pylon5",
@@ -462,7 +466,7 @@ flare 				= {default = 15, increment = 15, chargeSz = 2}
 			pylon(5, 0, 0, 0, 0,
 			{
 				arg = 313,
-				arg_value = 1,
+				arg_value = 0,
 				DisplayName = "3",
 				use_full_connector_position = true,
 				connector = "Pylon6",
@@ -472,7 +476,7 @@ flare 				= {default = 15, increment = 15, chargeSz = 2}
 		pylon(6, 0, 0, 0, 0,--
 			{
 				arg = 314,
-				arg_value = 1,
+				arg_value = 0,
 				DisplayName = "4",
 				use_full_connector_position = true,
 				connector = "Pylon7",
@@ -482,7 +486,7 @@ flare 				= {default = 15, increment = 15, chargeSz = 2}
 			pylon(7, 0, 0, 0, 0,
 				{
 					arg = 315,
-					arg_value = 1,
+					arg_value = 0,
 					DisplayName = "5",
 					use_full_connector_position = true,
 					connector = "Pylon8",
@@ -492,7 +496,7 @@ flare 				= {default = 15, increment = 15, chargeSz = 2}
 			pylon(8, 0, 0, 0, 0,
 				{
 					arg = 318,
-					arg_value = 1,
+					arg_value = 0,
 					DisplayName = "6",
 					use_full_connector_position = true,
 					connector = "Pylon11",
@@ -501,16 +505,19 @@ flare 				= {default = 15, increment = 15, chargeSz = 2}
 			),
 		},
 	
-	Tasks = {
-		aircraft_task(CAP),
-        aircraft_task(Escort),
-        aircraft_task(GroundAttack),
-        aircraft_task(PinpointStrike),
-        aircraft_task(CAS),
-        aircraft_task(AntishipStrike),
-        aircraft_task(Reconnaissance),
-    },	
-	DefaultTask = aircraft_task(CAP),
+		Tasks = {
+			aircraft_task(CAP),
+			aircraft_task(Escort),
+			aircraft_task(FighterSweep),
+			aircraft_task(Intercept),
+			aircraft_task(Reconnaissance),
+			aircraft_task(GroundAttack),
+			aircraft_task(CAS),
+		  --aircraft_task(AFAC),
+			aircraft_task(RunwayAttack),
+			aircraft_task(AntishipStrike),
+	  },	
+	  DefaultTask = aircraft_task(FighterSweep),
 	
 	SFM_Data = {
 		aerodynamics = -- Cx = Cx_0 + Cy^2*B2 +Cy^4*B4

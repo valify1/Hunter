@@ -57,7 +57,7 @@ end
 local HAS_STARTED		= 	0
 local BRAKE_COMMAND		=	0
 local BRAKE_STATE		=	0
-local flaps_command		=	1  -- 0.5
+local flaps_command		=	0.38  -- 0.5
 local flaps_state		=	0  -- 0.5
 local TrimIndicator 	= 	0
 
@@ -110,7 +110,7 @@ function SetCommand(command,value)
 	
 	if (command == FlapsDown and P_HYD2:get()>10) or (command == FlapsDown_Switch and P_HYD2:get()>10) then
 		flaps_command = 0.4 -- DOWN instruction
-		D_flaps_command:set(0.0)
+		D_flaps_command:set(0.38)
 	end
 
 	-- Trim command
@@ -152,7 +152,7 @@ function update()
 	end
 	
 	--UP instruction
-	if flaps_command == 1 and  flaps_state > 0 then
+	if flaps_command == 0.38 and  flaps_state > 0 then
 		flaps_state = flaps_state - 0.005 
 	else
 		flaps_state = flaps_state
@@ -190,7 +190,7 @@ function update()
 	end
 	
 	if (flaps_state > 0 and flaps_state < 0.5) or (flaps_state > 0.51 and flaps_state < 1) then
-		flaps_conso:set(100)
+		flaps_conso:set(38)
 	else
 		flaps_conso:set(0)
 	end

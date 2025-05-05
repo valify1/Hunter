@@ -24,6 +24,8 @@ creators[devices.GYRO_SYSTEM]		= {"avLuaDevice"		,LockOn_Options.script_path.."S
 creators[devices.START_PANEL]		= {"avLuaDevice"		,LockOn_Options.script_path.."Systems/start_panel.lua"}
 creators[devices.CANOPY]			= {"avLuaDevice"	    ,LockOn_Options.script_path.."Systems/canopy.lua"}
 creators[devices.Smoke]         = {"avSimpleWeaponSystem"   ,LockOn_Options.script_path.."Smoke/Smoke.lua"}
+creators[devices.Ladder]	= {"avLuaDevice"  ,LockOn_Options.script_path.."Systems/Ladder.lua"}
+creators[devices.Chute]	= {"avLuaDevice"  ,LockOn_Options.script_path.."Systems/Chute.lua"}
 
 
 --RADAR OFF creators[devices.RADAR]			 = {"avSimpleRadar"			,LockOn_Options.script_path.."RADAR/Device/init.lua"}

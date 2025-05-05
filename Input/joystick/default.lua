@@ -9,6 +9,8 @@ join(res.keyCommands,{
 {combos = {{key = "B"}}, down = iCommandPlaneAirBrake, name = "Airbrake", category = "Systems"},
 {combos = {{key = "B", reformers = {"LCtrl"}}}, down = iCommandPlaneAirBrakeOff, name = "Airbrake Off", category = "Systems"},
 {combos = {{key = "B", reformers = {"LShift"}}}, down = iCommandPlaneAirBrakeOn, name = "Airbrake On", category = "Systems"},
+{	down = 7001,	name = _('LADDER TOGGLE'),				category = _('Systems')},
+{	down = 7003,	name = _('CHUTE TOGGLE'),				category = _('Systems')},
 
 -- Smoke System,
 {	down = 11011, name = ('White Smoke'), category = ('Smoke') },

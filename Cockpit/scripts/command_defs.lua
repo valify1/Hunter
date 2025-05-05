@@ -22,6 +22,7 @@ Keys =
 	iCommandPlaneTrimCancel = 97,
 	iCommandPlaneLightsOnOff = 3001,
 	iCommandPlanePlaneFonar = 71,  -- Cockpit Toggle Test
+	PlaneParachute = 76,
 	iCommandPlaneStrobeLightOnOff = 502,
 	--iCommandRightEngineStop=	314,
 	iCommandPlaneHeadLightOnOff = 328,  -- Landing Light NearFar Off

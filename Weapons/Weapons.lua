@@ -5,7 +5,7 @@ local pylon_mass 	= 0.0
 
 declare_loadout({
 	category = CAT_FUEL_TANKS,
-	CLSID = "{VSN_Mk61000R_ptb}",
+	CLSID = "{Hunter_F6_1000R_ptb}",
 	attribute = {wsType_Air,wsType_Free_Fall,wsType_FuelTank,WSTYPE_PLACEHOLDER},
 	Picture = "PTB.png",
 	displayName = _("Fuel tank 675 Liter"),
@@ -15,9 +15,9 @@ declare_loadout({
 	Cx_pil = 0.00124,
 	shape_table_data = {
 		{
-			name = "VSN_Mk6_1000R_ptb",
-			file = "VSN_Mk6_1000R_ptb",
-			username = "VSN_Mk6_1000R_ptb",
+			name = "Hunter_F6_1000R_ptb",
+			file = "Hunter_F6_1000R_ptb",
+			username = "Hunter_F6_1000R_ptb",
 			life = 1,
 			fire = {0,1},
 			index = WSTYPE_PLACEHOLDER,
@@ -25,14 +25,14 @@ declare_loadout({
 	},
 	Elements = {
 		{
-			ShapeName = "VSN_Mk6_1000R_ptb",
+			ShapeName = "Hunter_F6_1000R_ptb",
 		},
 	}
 })
 
 declare_loadout({
 	category = CAT_FUEL_TANKS,
-	CLSID = "{VSN_Mk6500R_ptb}",
+	CLSID = "{Hunter_F6_500R_ptb}",
 	attribute = {wsType_Air,wsType_Free_Fall,wsType_FuelTank,WSTYPE_PLACEHOLDER},
 	Picture = "PTB.png",
 	displayName = _("Fuel tank 455 Liter"),
@@ -42,9 +42,9 @@ declare_loadout({
 	Cx_pil = 0.00124,
 	shape_table_data = {
 		{
-			name = "VSN_Mk6_500R_ptb",
-			file = "VSN_Mk6_500R_ptb",
-			username = "VSN_Mk6_500R_ptb",
+			name = "Hunter_F6_500R_ptb",
+			file = "Hunter_F6_500R_ptb",
+			username = "Hunter_F6_500R_ptb",
 			life = 1,
 			fire = {0,1},
 			index = WSTYPE_PLACEHOLDER,
@@ -52,14 +52,14 @@ declare_loadout({
 	},
 	Elements = {
 		{
-			ShapeName = "VSN_Mk6_500R_ptb",
+			ShapeName = "Hunter_F6_500R_ptb",
 		},
 	}
 })
 
 declare_loadout({
 	category = CAT_FUEL_TANKS,
-	CLSID = "{VSN_Mk61000L_ptb}",
+	CLSID = "{Hunter_F6_1000L_ptb}",
 	attribute = {wsType_Air,wsType_Free_Fall,wsType_FuelTank,WSTYPE_PLACEHOLDER},
 	Picture = "PTB.png",
 	displayName = _("Fuel tank 675 Liter"),
@@ -69,9 +69,9 @@ declare_loadout({
 	Cx_pil = 0.00124,
 	shape_table_data = {
 		{
-			name = "VSN_Mk6_1000L_ptb",
-			file = "VSN_Mk6_1000L_ptb",
-			username = "VSN_Mk6_1000L_ptb",
+			name = "Hunter_F6_1000L_ptb",
+			file = "Hunter_F6_1000L_ptb",
+			username = "Hunter_F6_1000L_ptb",
 			life = 1,
 			fire = {0,1},
 			index = WSTYPE_PLACEHOLDER,
@@ -79,14 +79,14 @@ declare_loadout({
 	},
 	Elements = {
 		{
-			ShapeName = "VSN_Mk6_1000L_ptb",
+			ShapeName = "Hunter_F6_1000L_ptb",
 		},
 	}
 })
 
 declare_loadout({
 	category = CAT_FUEL_TANKS,
-	CLSID = "{VSN_Mk6500L_ptb}",
+	CLSID = "{Hunter_F6_500L_ptb}",
 	attribute = {wsType_Air,wsType_Free_Fall,wsType_FuelTank,WSTYPE_PLACEHOLDER},
 	Picture = "PTB.png",
 	displayName = _("Fuel tank 455 Liter"),
@@ -96,9 +96,9 @@ declare_loadout({
 	Cx_pil = 0.00124,
 	shape_table_data = {
 		{
-			name = "VSN_Mk6_500L_ptb",
-			file = "VSN_Mk6_500L_ptb",
-			username = "VSN_Mk6_500L_ptb",
+			name = "Hunter_F6_500L_ptb",
+			file = "Hunter_F6_500L_ptb",
+			username = "Hunter_F6_500L_ptb",
 			life = 1,
 			fire = {0,1},
 			index = WSTYPE_PLACEHOLDER,
@@ -106,7 +106,7 @@ declare_loadout({
 	},
 	Elements = {
 		{
-			ShapeName = "VSN_Mk6_500L_ptb",
+			ShapeName = "Hunter_F6_500L_ptb",
 		},
 	}
 })

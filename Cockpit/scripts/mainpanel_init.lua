@@ -11,10 +11,9 @@ ambient_color_from_panels	 = {35, 25, 25}
 dusk_border					 = 0.4
 draw_pilot					 = false
 
-external_model_canopy_arg	 = 38
+external_model_canopy_arg	 = 181
 
 use_external_views = false 
-cockpit_local_point = {3.595,	0.725,	-0.1}  -- position cockpit 2.731,	-0.8,	0
 
 day_texture_set_value   = 0.0
 night_texture_set_value = 0.1
@@ -263,17 +262,7 @@ Sonde_Alti.output     		   		= {0.0, 0.18,0.29,0.46,0.75,0.83,0.93}
 
 
 
-ROTARY_SAFE_ALT		         	    = CreateGauge("parameter")
-ROTARY_SAFE_ALT.parameter_name   	= "ROTARY_SAFE_ALT"
-ROTARY_SAFE_ALT.arg_number    		= 91
-ROTARY_SAFE_ALT.input     	    	= {0.0, 1.0}
-ROTARY_SAFE_ALT.output     		   	= {0.0, 1.0}
 
-L_SAFE_ALT		         		    = CreateGauge("parameter")
-L_SAFE_ALT.parameter_name   		= "L_SAFE_ALT"
-L_SAFE_ALT.arg_number    			= 92
-L_SAFE_ALT.input     	    		= {0.0, 1.0}
-L_SAFE_ALT.output     		   		= {0.0, 1.0}
 
 Flag_Sonde		         	      	= CreateGauge("parameter")
 Flag_Sonde.parameter_name   		= "Flag_Sonde"

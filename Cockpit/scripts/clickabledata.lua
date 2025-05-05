@@ -278,6 +278,9 @@ elements["PNT_018"] = default_button("Flaps Full Down",devices.COMMANDS, device_
 elements["PNT_019"] = default_button("Gear Down",devices.COMMANDS, device_commands.Button_4,219)
 elements["PNT_020"] = default_button("Gear Up",devices.COMMANDS, device_commands.Button_5,220)
 
+
+elements["PNT_CHUTE_HANDLE"] = default_button(_("Drag Chute"), device_commands.ChuteHandle, 35)
+
 -- Airbrake
 --elements["PNT_013"] = default_button("Airbrakes Down",devices.AIR, device_commands.Button_13,213)
 --elements["PNT_014"] = default_button("Airbrakes Up",devices.AIR, device_commands.Button_14,214)

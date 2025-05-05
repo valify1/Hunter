@@ -14,7 +14,7 @@ local LIB_COCKPIT = get_param_handle("LIB_COCKPIT")
 local CANOPY_STATUS = get_param_handle("CANOPY_STATUS")
 local CANOPY_COMMAND = get_param_handle("CANOPY_COMMAND")
 
-local CockpitOnOff 		= 71
+local CockpitOnOff 		= 181
 local CockpitIsOpen 	= 0
 local CANOPYSTATUS		= 0
 local Verriere 			= 3069

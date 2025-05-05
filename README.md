@@ -33,4 +33,28 @@ Gear Light Turning on after 1 press (2nd press is required to stay on)
 Not all flight control systems are working (Flaps, left elevator and aileron + front gear)
 Gear Up and Gear Down buttons do not work (Use Gear Up/Down for now, same with flaps)
 
+# Hunter V1.1
 
+New features coming to the Hunter in the next update:
+
+External:
+
+* Flaps Working set to 38 degrees
+* Rudder and all control surface animations are working
+* Gear Light not flickering 
+* Fitted F-15C EFM onto the jet
+* F4 view position fixed
+
+Internal:
+
+* Throttle animation working
+* Fixed view  position (can now look over the wings)
+
+Controls:
+
+* Flap Up working
+* Flap Down Working
+* Added Wheel Break Left and Wheel Break Right 
+* Gear Up and Gear Down added
+
+This will be released on the GitHub when its working properly
