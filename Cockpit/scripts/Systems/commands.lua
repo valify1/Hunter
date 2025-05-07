@@ -25,7 +25,6 @@ local TrimDown = 96
 
 local FlapsUp = 145 
 local FlapsMid = 72 
-local FlapsDown = 146
 
 local FlapsUp_Switch = 3003 
 local FlapsMid_Switch = 3002 
@@ -57,7 +56,7 @@ end
 local HAS_STARTED		= 	0
 local BRAKE_COMMAND		=	0
 local BRAKE_STATE		=	0
-local flaps_command		=	0.38  -- 0.5
+local flaps_command		=	0  -- 0.5
 local flaps_state		=	0  -- 0.5
 local TrimIndicator 	= 	0
 
@@ -69,7 +68,7 @@ dev:listen_command(BrakeOn)
 dev:listen_command(BrakeOff)
 
 dev:listen_command(FlapsUp)
-dev:listen_command(FlapsDown)
+dev:listen_command(FlapsMid)
 
 dev:listen_command(TrimUp)
 -- dev:listen_command(TrimNeutral)
@@ -108,9 +107,9 @@ function SetCommand(command,value)
 
 	end
 	
-	if (command == FlapsDown and P_HYD2:get()>10) or (command == FlapsDown_Switch and P_HYD2:get()>10) then
-		flaps_command = 0.4 -- DOWN instruction
-		D_flaps_command:set(0.38)
+	if (command == FlapsMid and P_HYD2:get()>10) or (command == FlapsMid_Switch and P_HYD2:get()>10) then
+		flaps_command = 1 -- DOWN instruction
+		D_flaps_command:set(1)
 	end
 
 	-- Trim command
@@ -122,8 +121,7 @@ function SetCommand(command,value)
 	end
 	if command == TrimNeutral then
 		TrimIndicator = 0
-	end
-end
+	
 -- local p_gearstate = get_param_handle("GEARSTATE") --Any examples of this? I don't remember...
 -- local fmparams = get_param_handle("FM_Params")
 -- fmparams:set(string.format("%sGEARSTATE;",fmparams:get()))

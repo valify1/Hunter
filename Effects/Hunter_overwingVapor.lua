@@ -1,6 +1,6 @@
 Presets = 
 {
-	VSNMK6 =
+	F6 =
 	{
 		{
 			Type = "overwingVapor",

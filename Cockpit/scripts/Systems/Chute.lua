@@ -43,7 +43,6 @@ function func_CHUTE()
 
 	if OUT then
 		if CHUTE < 1 then
-			local speed = sensor_data.getTrueAirSpeed()
 			CHUTE = CHUTE + 0.01
 			set_aircraft_draw_argument_value(35,CHUTE)
 		end

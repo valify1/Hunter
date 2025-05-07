@@ -185,29 +185,24 @@ F6 =  {
 	Categories 			= {"{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}", "Interceptor",},	
 	----- Weight & Fuel Characteristics  ------
     
-	M_empty						=	17661,	
-	M_fuel_max					=	10245.529841877513,	-- kg (Maximum Internal Fuel Only)
-	M_nominal					=	17661 + 10245.529841877513, -- kg (Empty Plus Full Internal Fuel)
-    -- Maximum takeoff weight 81,0000 LBS = 36741 KG
-	M_max						=	36741,		   -- kg (Maximum Take Off Weight - Rolling)
-	H_max						=	18300,		   -- m  (Maximum Operational Ceiling)
-    -- Currently around 132 knots - okay?
-	CAS_min						=	58,			   -- Minimum CAS speed (m/s) (for AI)
-	average_fuel_consumption	=	0.271,
-	CAS_min 					= 50, -- if this is not OVERAL FLIGHT TIME, but jus LOITER TIME, than it should be 10-15 minutes.....CAS capability in minute (for AI)
-	V_opt 						= 300,-- Cruise speed (for AI)
-	V_take_off 					= 57, -- Take off speed in m/s (for AI)
-	V_land 						= 51, -- Land speed in m/s (for AI)
-	V_max_sea_level 			= 283, -- Max speed at sea level in m/s (for AI)
-	V_max_h 					= 334, -- Max speed at max altitude in m/s (for AI)
-	Vy_max 						= 31, -- Max climb speed in m/s (for AI)
-	Mach_max 					= 0.94, -- Max speed in Mach (for AI)
-	Ny_min						= -3,
-	-- Ny_min_e					=	-3,
-	Ny_max						= 7.5,
-	Ny_max_e 					= 7.5,  -- Max G (for AI)
-	AOA_take_off 				= 0.22, -- AoA in take off (for AI)
-	stores_number				= 5,
+	M_empty 					= 14742, -- kg
+	M_nominal 					= 20252, -- kg
+	M_max 						= 28122, -- kg
+	M_fuel_max 					= 5510.5, -- kg --Internal fuel
+	H_max 					 	= 18000, -- m
+	average_fuel_consumption 	= 0.85, -- this is highly relative, but good estimates are 36-40l/min = 28-31kg/min = 0.47-0.52kg/s -- 45l/min = 35kg/min = 0.583kg/s
+	CAS_min 					= 60, -- if this is not OVERAL FLIGHT TIME, but jus LOITER TIME, than it sholud be 10-15 minutes.....CAS capability in minute (for AI)
+	V_opt 						= 257,-- Cruise speed (for AI)
+	V_take_off 					= 91, -- Take off speed in m/s (for AI)
+	V_land 						= 77, -- Land speed in m/s (for AI)
+	V_max_sea_level 			= 400, -- Max speed at sea level in m/s (for AI)
+	V_max_h 					= 612, -- Max speed at max altitude in m/s (for AI)
+	Vy_max 						= 210, -- Max climb speed in m/s (for AI)
+	Mach_max 					= 2.23, -- Max speed in Mach (for AI)
+	Ny_min 						= -3, -- Min G (for AI)
+	Ny_max 						= 6.5,  -- Max G (for AI)
+	Ny_max_e 					= 8.5,  -- Max G (for AI)
+	AOA_take_off 				= 0.20, -- AoA in take off (for AI)
 	bank_angle_max 				= 85, -- Max bank angle (for AI)
 
 

@@ -15,7 +15,7 @@ local CANOPY_STATUS = get_param_handle("CANOPY_STATUS")
 local CANOPY_COMMAND = get_param_handle("CANOPY_COMMAND")
 
 local CockpitOnOff 		= 181
-local CockpitIsOpen 	= 0
+local CockpitIsOpen 	= 1
 local CANOPYSTATUS		= 0
 local Verriere 			= 3069
 local nPas				= 0.01 --0.02

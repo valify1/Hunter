@@ -53,15 +53,15 @@ mount_vfs_texture_path  (current_mod_path.."/Textures/Textures.zip")
 mount_vfs_texture_path  (current_mod_path.."/Textures/Avionics")
 mount_vfs_texture_path  (current_mod_path.."/Cockpit/Resources/Model/Textures/Cockpit.zip")
 mount_vfs_model_path	(current_mod_path.."/Cockpit/Resources/Model/Shape")
-mount_vfs_sound_path    (current_mod_path.."/Sounds")
+mount_vfs_sound_path(current_mod_path.."/Sounds/")
 
 
 
 
-
+dofile(current_mod_path..'/Weapons/Weapons.lua')
 dofile(current_mod_path.."/Views.lua")
 dofile(current_mod_path..'/Hunter.lua')
-
+dofile(current_mod_path.."/sounders.lua")
 
 
 F15FM.old = 6

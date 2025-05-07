@@ -218,7 +218,7 @@ function update()
 	if FLAPSPOS:get() > 0 then
 		LIB_FLAPS:set("FLAPS")
 	else
-		LIB_FLAPS:set(" ")
+		LIB_FLAPS:set("")
 	end
 	
 	GHP:set(sensor_data.getLandingGearHandlePos())

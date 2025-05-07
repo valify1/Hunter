@@ -92,9 +92,6 @@ function update()
 	
 	-- Actuators aileron, stabiliser and rudder
 	if P_HYD1_L > 100 or P_HYD2_L > 100 then
-		set_aircraft_draw_argument_value(11,aileron_command)
-		set_aircraft_draw_argument_value(15,stablisator_command)
-		set_aircraft_draw_argument_value(18,rudder_command)
 		else
 		set_aircraft_draw_argument_value(11,0)
 		set_aircraft_draw_argument_value(15,0)

@@ -56,8 +56,5 @@ Controls:
 * Flap Down Working
 * Added Wheel Break Left and Wheel Break Right 
 * Gear Up and Gear Down added
-<<<<<<< HEAD
 
 This will be released on the GitHub when its working properly
-=======
->>>>>>> 623171076e5756de59c4331d044d0ba6b668c34d

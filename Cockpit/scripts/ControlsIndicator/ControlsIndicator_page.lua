@@ -9,20 +9,26 @@ function AddElement(object)
 end
 
 
-local pitch_stick_real_range	= 7.5--9.03
-local pitch_stick_part_positive	= 2.5/pitch_stick_real_range
-local pitch_stick_part_negative	= 5.0/pitch_stick_real_range
-local roll_stick_real_range		= 6.0
+local pitch_stick_fwd = 40.0
+local pitch_stick_aft = 40.0
+local pitch_stick_range = pitch_stick_fwd + pitch_stick_aft
+
+local pitch_stick_real_range	= 9.03125
+local pitch_stick_part_positive	= pitch_stick_fwd / pitch_stick_range
+local pitch_stick_part_negative	= pitch_stick_aft / pitch_stick_range
+local roll_stick_real_range		= 11.875
 local roll_stick_part_left		= 0.5
 local roll_stick_part_right		= 0.5
 
+local throttleIdle				= 0.1
+local throttleMil				= 0.775
 
 local aspect			= LockOn_Options.screen.aspect
 local size_x			= 0.15	-- +-size_x
-local size_y_positive	= size_x * 1.5 * pitch_stick_real_range / roll_stick_real_range * pitch_stick_part_positive
-local size_y_negative	= size_x * 1.5 * pitch_stick_real_range / roll_stick_real_range * pitch_stick_part_negative
+local size_y_positive	= size_x * 2.2 * pitch_stick_real_range / roll_stick_real_range * pitch_stick_part_positive
+local size_y_negative	= size_x * 2.2 * pitch_stick_real_range / roll_stick_real_range * pitch_stick_part_negative
 local tex_scale			= 0.25/size_x
-local line_width		= (4.5/512)/tex_scale * 0.3
+local line_width		= (4/512)/tex_scale * 0.5
 
 
 local roll_stick_movement           = 140
@@ -41,48 +47,68 @@ local rud_base_shift	= rud_shift --0.05*size_x
 local orange_mat		= MakeMaterial("", {255, 100, 0, 50})
 local rudder_shift		= 0.1*size_x
 
+
+local function add_line(name, pos, length, _width05, rot, parent, controllers)
+	local width05 = line_width
+	if _width05 ~= nil then
+		width05 = _width05
+	end
+
+	local elem			= CreateElement "ceTexPoly"
+	elem.name			= name
+	elem.material		= "ARCADE"
+	elem.vertices		= {	{ 0,		-width05},
+							{ 0,		 width05},
+							{ length,	 width05},
+							{ length,	-width05} }
+	elem.indices		= default_box_indices
+	elem.tex_params		= {(128 + 64)/512, 176.5/512, 0.25/tex_scale, 0.015625/(width05*2)}
+
+	elem.init_pos		= {pos[1], pos[2], 0}
+
+	if rot ~= nil then
+		elem.init_rot		= {rot,0,0}
+	end
+
+	if parent ~= nil then
+		elem.parent_element	= parent
+	end
+
+	if controllers ~= nil then
+		elem.controllers	= controllers
+	end
+
+	AddElement(elem)
+
+	return elem
+end
+
+
+
+
+
+
 -- BASE -----------------------------------------------------------------------
 base				= CreateElement "ceMeshPoly"
 base.name			= "base"
 base.primitivetype	= "triangles"
-base.material		= orange_mat -- "GREEN_TRANSPARENT"
-base.vertices		= {{-(size_x + rud_base_shift + 2*ds),	-(size_y_negative + 2 * ds + rud_base_shift)},	-- lower left, CW
-                       {-(size_x + rud_base_shift + 2*ds),	size_y_positive  + ds},
-                       { size_x  + ds,						size_y_positive  + ds},
-                       { size_x  + ds,						-(size_y_negative + 2 * ds + rud_base_shift)}}        
+base.material		= orange_mat
+base.vertices		= {{-(size_x + rud_shift + rud_base_shift + 2*ds),	-(size_y_negative + 2 * ds + rudder_shift)},	-- lower left, CW
+                       {-(size_x + rud_shift + rud_base_shift + 2*ds),	size_y_positive  + ds},
+                       { size_x  + ds,									size_y_positive  + ds},
+                       { size_x  + ds,									-(size_y_negative + 2 * ds + rudder_shift)}}        
 base.indices		= default_box_indices
-base.init_pos		= {0,-(1 - 2.0*size_x)}
-base.controllers	= {{"show"},{"screenspace_position",2,-(aspect - 2.0*size_x),0},
+base.init_pos		= {0,-(1 - 1.3*size_x)}
+base.controllers	= {{"show"},{"screenspace_position",2,-(aspect - 2*size_x),0},
                                 {"screenspace_position",1,0,0}}
 base.h_clip_relation	= h_clip_relations.REWRITE_LEVEL
 base.level			= DEFAULT_LEVEL
 AddElement(base)
 
--- STICK SCALE-----------------------------------------------------------------
-pitch_scale					= CreateElement "ceTexPoly"
-pitch_scale.name			= "pitch_scale"
-pitch_scale.vertices		= {	{-size_y_negative,	-line_width},
-								{-size_y_negative,	line_width},
-								{size_y_positive,	line_width},
-								{size_y_positive,	-line_width}}
-pitch_scale.indices			= default_box_indices
-pitch_scale.material		= "ARCADE"
-pitch_scale.init_rot		= {90,0,0}
-pitch_scale.tex_params		= {256/512,176.5/512,0.5*tex_scale,2*tex_scale}
-pitch_scale.parent_element	= base.name
-AddElement(pitch_scale)
 
-roll_scale					= CreateElement "ceTexPoly"
-roll_scale.name				= "roll_scale"
-roll_scale.vertices			= {	{-size_x,	-line_width},
-								{-size_x,	line_width},
-								{size_x,	line_width},
-								{size_x,	-line_width}}
-roll_scale.indices			= default_box_indices
-roll_scale.material			= "ARCADE"
-roll_scale.tex_params		= {256/512, 176.5/512, tex_scale, 2*tex_scale}
-roll_scale.parent_element	= base.name
-AddElement(roll_scale)
+-- STICK SCALE-----------------------------------------------------------------
+local pitch_scale = add_line("pitch_scale", {0, -size_y_negative}, size_y_negative + size_y_positive, nil, 90, base.name)
+local roll_scale = add_line("roll_scale", {-size_x, 0}, size_x * 2, nil, nil, base.name)
 
 -- STICK ----------------------------------------------------------------------
 local stick_index_size = 0.1 * size_x
@@ -117,107 +143,39 @@ trimmer_position.controllers	= {	{"trimmer_stick_pitch",	size_y_negative},
 trimmer_position.parent_element	= base.name
 AddElement(trimmer_position)
 
-fcc_trim_base				= CreateElement "ceSimple"
-fcc_trim_base.controllers	= {	{"fcc_trimmer_stick_pitch",	size_y_negative},
-								{"fcc_trimmer_stick_roll",	size_x},
-								{"scale",0.7,0.7}}
-fcc_trim_base.name			= "fcc_trim_base"
-fcc_trim_base.parent_element	= base.name
-AddElement(fcc_trim_base)
-
-fcc_trim_hor				= CreateElement "ceTexPoly"
-fcc_trim_hor.name			= "fcc_trim_hor"
-fcc_trim_hor.vertices		= {	{-rud_shift*0.5,	-line_width},
+trimmer10					= CreateElement "ceTexPoly"
+trimmer10.name				= "trimmer10"
+trimmer10.vertices			= {	{-rud_shift*0.5,	-line_width},
 								{-rud_shift*0.5,	line_width},
 								{rud_shift*0.5,	line_width},
 								{rud_shift*0.5,	-line_width}}
-fcc_trim_hor.indices		= default_box_indices
-fcc_trim_hor.material		= "ARCADE"
-fcc_trim_hor.tex_params		= {256/512, 176.5/512, tex_scale, 2*tex_scale}
-fcc_trim_hor.parent_element	= fcc_trim_base.name
-AddElement(fcc_trim_hor)
+trimmer10.indices			= default_box_indices
+trimmer10.material			= "ARCADE"
+trimmer10.tex_params		= {256/512, 176.5/512, tex_scale, 2*tex_scale}
+trimmer10.controllers		= {	{"move",	-10.0/17.0*size_y_negative},
+								{"rotate",	math.rad(90)},
+								{"scale",0.7,1.0}}
+trimmer10.parent_element	= pitch_scale.name
+--AddElement(trimmer10)
 
-fcc_trim_ver				= Copy(fcc_trim_hor)
-fcc_trim_ver.name			= "fcc_trim_ver"
-fcc_trim_ver.init_rot		= {-90,0,0}
-AddElement(fcc_trim_ver)
 
 -- PEDALS ---------------------------------------------------------------------
-rudder_scale				= Copy(roll_scale)
-rudder_scale.name			= "rudder_scale"
-rudder_scale.init_pos		= {0, -(size_y_negative + rudder_shift)}
-AddElement(rudder_scale)
-
-rudder_index				= Copy(roll_scale)
-rudder_index.vertices		= {	{-rudder_shift,	-line_width},
-								{-rudder_shift,	line_width},
-								{rudder_shift,	line_width},
-								{rudder_shift,	-line_width}}
-rudder_index.controllers	= {{"rudder",size_x},{"rotate",math.rad(90)}}
-rudder_index.parent_element	= rudder_scale.name
-AddElement(rudder_index)
+local rudder_scale = add_line("rudder_scale", {-size_x, -(size_y_negative + rudder_shift)}, size_x * 2, nil, nil, base.name)
+local rudder_index = add_line("rudder_index", {0, -(size_y_negative + rudder_shift * 2)}, rudder_shift * 2, nil, nil, base.name, {{"rudder",size_x}, {"rotate",math.rad(90)}})
 
 
 -- THROTTLE SCALE -------------------------------------------------------------
-throttle_scale					= Copy(pitch_scale)
-throttle_scale.name				= "throttle_scale"
-throttle_scale.vertices		= {	{-size_y_negative*1.15,	-line_width},
-								{-size_y_negative*1.15,	line_width},
-								{size_y_positive,	line_width},
-								{size_y_positive,	-line_width}}
-throttle_scale.init_pos			= {-(size_x + rud_base_shift + ds), 0}
-throttle_scale.parent_element	= base.name
-AddElement(throttle_scale)
+local throttle_px = -(size_x + rud_base_shift + ds)
+local throttle_py = -(size_y_negative + rudder_shift * 2)
+local throttle_scale_length = size_y_negative + size_y_positive + rudder_shift * 2
 
-local throttleScaleL = size_y_negative*1.15 + size_y_positive
-local throttleScaleD = -size_y_negative*1.15
-idle_scale					= Copy(rudder_scale)
-idle_scale.name				= "idle_scale"
-idle_scale.vertices		= {	{-rud_shift*0.5,	-line_width},
-							{-rud_shift*0.5,	line_width},
-							{rud_shift*0.5,	line_width},
-							{rud_shift*0.5,	-line_width}}
-idle_scale.init_pos			= {0.1 * throttleScaleL + throttleScaleD, 0}
-idle_scale.init_rot			= {-90,0,0}
-idle_scale.parent_element	= throttle_scale.name
-AddElement(idle_scale)
+local throttle_scale = add_line("throttle_scale", {throttle_px, throttle_py}, throttle_scale_length, nil, 90, base.name)
+local idle_scale = add_line("idle_scale", {throttle_px - rud_shift * 0.5, throttle_py + throttle_scale_length * throttleIdle}, rud_shift, nil, nil, base.name)
+local ab_scale = add_line("ab_scale", {throttle_px - rud_shift * 0.5, throttle_py + throttle_scale_length * throttleMil}, rud_shift, nil, nil, base.name)
 
-ab_scale				= Copy(idle_scale)
-ab_scale.name			= "ab_scale"
-ab_scale.vertices		= {	{-rud_shift*0.5,	-line_width},
-							{-rud_shift*0.5,	line_width},
-							{rud_shift*0.5,	line_width},
-							{rud_shift*0.5,	-line_width}}
-ab_scale.init_pos		= {0.77 * throttleScaleL + throttleScaleD, 0}
-ab_scale.init_rot		= {-90,0,0}
-ab_scale.parent_element	= throttle_scale.name
-AddElement(ab_scale)
+-- THROTTLE
+local throttle_index = add_line("throttle_index", {throttle_px - rud_shift * 1.5 * 0.5, throttle_py}, rud_shift * 1.5, line_width * 2, nil, base.name, {{"throttle", throttle_scale_length}--[[,{"scale",1.0,2.0}]]})
 
--- THROTTLE LEFT
-throttleLeft_index					= Copy(roll_scale)
-throttleLeft_index.vertices			= {	{-rud_shift,	-2*line_width},
-										{-rud_shift,	2*line_width},
-										{0*rud_shift,		2*line_width},
-										{0*rud_shift,		-2*line_width}}
-throttleLeft_index.init_pos			= {throttleScaleD, 0}
-throttleLeft_index.init_rot			= {-90,0,0}
-throttleLeft_index.controllers		= {{"throttlePos", 0, throttleScaleL},
-									{"scale",1.0, 2.0}}
-throttleLeft_index.parent_element	= throttle_scale.name
-AddElement(throttleLeft_index)
-
--- THROTTLE RIGHT
-throttleRight_index					= Copy(roll_scale)
-throttleRight_index.vertices		= {	{-0*rud_shift,	-2*line_width},
-										{-0*rud_shift,	2*line_width},
-										{rud_shift,		2*line_width},
-										{rud_shift,		-2*line_width}}
-throttleRight_index.init_pos		= {throttleScaleD, 0}
-throttleRight_index.init_rot		= {-90,0,0}
-throttleRight_index.controllers		= {{"throttlePos", 1, throttleScaleL},
-									{"scale",1.0, 2.0}}
-throttleRight_index.parent_element	= throttle_scale.name
-AddElement(throttleRight_index)
 
 -- WHEEL BRAKES ---------------------------------------------------------------
 
@@ -236,7 +194,7 @@ for i = 1,2 do
 											   {-signum[i] * 0.3 * sz_wheel_brake ,sz_wheel_brake},
 											   {-signum[i] * 0.3 * sz_wheel_brake ,0}}
 			wheel_brake_mask.indices		= {0,1,2,0,2,3}
-			wheel_brake_mask.material	    = "MASK_MATERIAL_PURPLE"
+			wheel_brake_mask.material	    = "MASK_MATERIAL"
 			wheel_brake_mask.init_pos       = {signum[i] * brakes_pos[1],brakes_pos[2]}
 			wheel_brake_mask.parent_element = base.name
 			wheel_brake_mask.controllers    = {{"brakes_value",i,sz_wheel_brake}}
