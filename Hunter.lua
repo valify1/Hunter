@@ -412,7 +412,7 @@ modulation 		= MODULATION_AM
 	
 			stores_number =	3,  
 			Pylons = {
-				pylon(1, 2, -7.6, -0.2, 0,--SMOKE POD 
+				pylon(1, 2, -7.0, -0.2, 0,--SMOKE POD 
 				{
 							connector = "disable",
 							DisplayName = ("W SMK")
@@ -425,7 +425,7 @@ modulation 		= MODULATION_AM
 					{ CLSID    = "{A4BCC903-06C8-47bb-9937-A30FEDB4E745}" }, --Smokewinder - yellow
 				}
 			),
-			pylon(2, 2, -7.6, -0.20, 0,--SMOKE POD 
+			pylon(2, 2, -7.0, -0.20, 0,--SMOKE POD 
 			{
 						connector = "disable",
 						DisplayName = ("R SMK")
