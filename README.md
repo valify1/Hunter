@@ -61,6 +61,5 @@ This will be released on the GitHub when its working properly
 
 # **Hunter V1.2**
 
-Fixed:
 * Updated Weight to F-4E Weight
-* 
+  
