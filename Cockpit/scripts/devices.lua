@@ -24,5 +24,3 @@ devices["RADAR_ALTIMETER"]			= counter()--17
 devices["HSI"]						= counter()--18
 devices["CANOPY"]					= counter()--19
 devices["Smoke"]					= counter()
-devices["Ladder"]					= counter()--21
-devices["Chute"]					= counter()--22

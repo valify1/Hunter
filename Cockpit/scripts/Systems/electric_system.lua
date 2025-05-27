@@ -47,13 +47,24 @@ dev:listen_command(CONV2)
 dev:listen_command(PanelTest)
 dev:listen_command(DELESTAGE)
 
+    Covers = set_aircraft_draw_argument_value(24)
+    Ladder = set_aircraft_draw_argument_value(805)
+	Canopy = set_aircraft_draw_argument_value(38)
+
+
 function SetCommand(command,value)
 	
 	if command == MasterBattery then
 		if (MasterBattIsOn == 1) then
 			MasterBattIsOn = 0
+			Covers = 0
+            Ladder = 0
+			Canopy = 0
 		else
 			MasterBattIsOn = 1
+			Covers = 1
+            Ladder = 1
+			Canopy = 0.9
 		end
 	end
 	-- Left Generator 
@@ -159,5 +170,8 @@ function update()
 	-- Master Battery Toggle
 	T_BATT:set(MasterBattIsOn)
 	L_BATT:set(MasterBattIsOn)
+
+
+
 
 end

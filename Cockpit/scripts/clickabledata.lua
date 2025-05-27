@@ -351,7 +351,7 @@ elements["PNT-CACHE-HRZ"]	= default_2_position_tumb(_("Hide/Show"), devices.GYRO
 -- Toggle side smoke system 
 elements["PNT-SWITCH-FUMI"]	= default_2_position_tumb(_("Right/Left"), devices.SYSTEMS, device_commands.Button_1, 317)
 -- Toggle cockpit 
-elements["LVR-COCKPIT"]	= default_2_position_tumb(_("Open/Close"), devices.CANOPY, device_commands.Button_1, 318)
+elements["LVR-COCKPIT"]	= default_2_position_tumb(_("Open/Close"), devices.CANOPY, device_commands.Button_1, 38)
 -- Toggle Saute 
 --elements["PNT-SAUTE"]	= default_2_position_tumb(_("Bouton inconnu Touche A Ton Cul"), devices.SAUTE, device_commands.Button_1, 319)
 

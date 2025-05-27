@@ -21,6 +21,7 @@ local BASE_COLOR_MAT    = MakeMaterial(nil,BASE_COLOR)
 
 local shape_rotation = (sensor_data.getRoll()) * 57.3
 
+
 -- shape_rotation = math.tan(shape_rotation/57.3) * 1000 -- to mils -- NOTE: this does nothing currently, returns 0
 
 local full_radius = 400 -- is this the radius of "HUD/net view field"? Units 108 (pixels or angular units)? no effect!
@@ -30,6 +31,7 @@ local grid_radius =  full_radius + grid_shift
 local grid_origin	         = CreateElement "ceSimple"
 grid_origin.name 		     = create_guid_string() -- no such function in this script. Not in definitions.lua either. Could be in elements_defs.lua
 grid_origin.collimated 		 = true
+grid_origin.init_pos = {0, 65, 0}  
 AddElement(grid_origin)
 
 local PitchScaleParam	    = CreateElement "ceTexPoly" --this could be the text area on HUD
@@ -41,8 +43,8 @@ PitchScaleParam.vertices   = {{-grid_radius, grid_radius},
 PitchScaleParam.indices			= {0,1,2,2,3,0}
 PitchScaleParam.tex_coords	 	= {{0,0},{1,0},{1,1},{0,1}}
 PitchScaleParam.material		= PitchScale	   
-PitchScaleParam.element_params  = {"HUD_PITCH"}  -- Global Variable to test
-PitchScaleParam.controllers     = {{"move_up_down_using_parameter",0,0}} 
+PitchScaleParam.element_params = {"HUD_PITCH"}
+PitchScaleParam.controllers = {{"move_up_down_using_parameter", 0, 0}}
 PitchScaleParam.collimated 		= true
 PitchScaleParam.parent_element 	= grid_origin.name
 AddElement(PitchScaleParam)

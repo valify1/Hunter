@@ -179,6 +179,7 @@ F6 =  {
 	
 	-- add model draw args for network transmitting to this draw_args table (32 limit)
 	
+
 					
 	mapclasskey 		= "P0091000025",
 	attribute  			= {wsType_Air, wsType_Airplane, wsType_Fighter, WSTYPE_PLACEHOLDER ,"Battleplanes",},
@@ -249,6 +250,7 @@ F6 =  {
 			pos 		=  {-3.28,	-0.427,	0.6}, -- nozzle coords -3.234,	-0.427,	0.6
 			elevation   =  0, -- AFB cone elevation
 			diameter	 = 0.1, -- AFB cone diameter
+			smokiness_level		= 	0.50,
 			exhaust_length_ab   = 0.1, -- lenght in m
 			exhaust_length_ab_K = 0.1, -- AB animation
 		}, -- end of [1]
@@ -257,6 +259,7 @@ F6 =  {
 			pos 		=  {-3.28,	-0.427,	-0.6}, -- nozzle coords -3.234,	-0.427,	-0.6
 			elevation   =  0, -- AFB cone elevation
 			diameter	 = 0.1, -- AFB cone diameter
+			smokiness_level		= 	0.50,
 			exhaust_length_ab   = 0.1, -- lenght in m
 			exhaust_length_ab_K = 0.1, -- AB animation
 		}, -- end of [2]
@@ -300,6 +303,22 @@ F6 =  {
 			{effect = "OVERWING_VAPOR", file = current_mod_path.."/Effects/Hunter_overwingVapor.lua"},
 		},
 	
+	mechanimations = {
+		Door0 = {
+			{Transition = {"Close", "Open"},  Sequence = {{C = {{"Arg", 38, "to", 0.9, "in", 9.0},},},}, Flags = {"Reversible"},},
+			{Transition = {"Open", "Close"},  Sequence = {{C = {{"Arg", 38, "to", 0.0, "in", 6.0},},},}, Flags = {"Reversible", "StepsBackwards"},},
+			{Transition = {"Any", "Bailout"}, Sequence = {{C = {{"JettisonCanopy", 0},},},},},
+		},
+		CrewLadder = {
+			{Transition = {"Dismantle", "Erect"}, Sequence = {
+				{C = {{"Arg", 805, "to", 1.0, "in", 3.0}}},
+			}},
+			{Transition = {"Erect", "Dismantle"}, Sequence = {
+				{C = {{"Arg", 805, "to", 0.0, "in", 3.0}}},
+			}},
+		},
+	}, -- end of mechanimations
+
 		chaff_flare_dispenser = 
 		{
 			[1] = 
