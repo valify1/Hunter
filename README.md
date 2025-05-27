@@ -61,5 +61,7 @@ This will be released on the GitHub when its working properly
 
 # **Hunter V1.2**
 
-* Updated Weight to F-4E Weight
+* Liveries 1-6 done
+* Static Jets have covers and ladders out
+* Screws added onto the wings
   
