@@ -26,15 +26,7 @@ Keys =
 	iCommandPlaneStrobeLightOnOff = 502,
 	--iCommandRightEngineStop=	314,
 	iCommandPlaneHeadLightOnOff = 328,  -- Landing Light NearFar Off
-   
-	
-MISC =
-{
-	Covers = __custom_counter(),
-	Ladder = __custom_counter(),
-	Canopy = __custom_counter(),
-}
-
+    	
 }
 
 start_command   = 3000

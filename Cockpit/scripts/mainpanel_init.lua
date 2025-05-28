@@ -54,7 +54,7 @@ CANOPY.controller				= controllers.base_gauge_CanopyPos
 
 CANOPYSWITCH					= CreateGauge("parameter")
 CANOPYSWITCH.parameter_name  	= "CANOPY_COMMAND"
-CANOPYSWITCH.arg_number			= 181
+CANOPYSWITCH.arg_number			= 99
 CANOPYSWITCH.input				= {0.0, 1.0}
 CANOPYSWITCH.output				= {0.0, 1.0}
 

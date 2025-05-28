@@ -36,9 +36,7 @@ livery = {
 name = "Raven 2"
 Countries = "UK"
 custom_args = {
-	[24] = 1, -- Cover
-	[36] = -1, -- Chute Up/Down
-	[38] = 0.9, -- Canopy
+
 	[182] = 0.5, -- Airbrake
 	[309] = 1, -- Left Outboard Pylon
 	[312] = 1, -- Left Middleboard Pylon
@@ -48,6 +46,6 @@ custom_args = {
 	[318] = 1, -- Right Outboard Pylon
 	[320] = 1, -- Right Wingtip Pylon
 	[321] = 1, -- Left Wingtip Pylon
-	[805] = 1, -- Ladder Draw
+
 }
 
