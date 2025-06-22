@@ -3,16 +3,14 @@ declare_plugin(self_ID,
 {
 installed 	 = true, -- if false that will be place holder , or advertising
 dirName	  	 = current_mod_path,
-version		 = "Public",	--
+version		 = "",	
 displayName  = _("Hunter F6"),
-
 fileMenuName = _("Hunter"),
 update_id        = "Hunter",
- 	 
+info		 = _("The Hawker Hunter F.6 was a British jet fighter developed in the 1950s by Hawker Aircraft Ltd and is often considered one of the most elegant and capable jets of its era. The F.6 variant was primarily used for ground attack and reconnaissance roles, with an emphasis on low-level operations. Its design included a bubble canopy for improved visibility and a retractable tailwheel landing gear. The Hunter F.6 served with the Royal Air Force and several other air forces around the world, known for its agility and performance in both air-to-air and ground attack missions. The aircraft's legacy continues to be celebrated by aviation enthusiasts and historians alike."),
 state		 = "installed",
 binaries   =
 {
---'ED_FM_Template',
 nil,
 },
 Skins	=
@@ -61,11 +59,10 @@ mount_vfs_sound_path    (current_mod_path.."/Sounds/")
 dofile(current_mod_path..'/Weapons/Weapons.lua')
 dofile(current_mod_path.."/Views.lua")
 dofile(current_mod_path..'/Hunter.lua')
-dofile(current_mod_path.."/sounders.lua")
+
 
 
 F15FM.old = 6
 make_flyable('Hunter F6', current_mod_path..'/Cockpit/Scripts/', F15FM, current_mod_path..'/comm.lua')
 
-plugin_done()-- finish declaration , clear temporal data
-
+plugin_done()

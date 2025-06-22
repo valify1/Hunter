@@ -720,6 +720,15 @@ modulation 		= MODULATION_AM
 	[WOLALIGHT_BEACONS]	= {},-- STROBE / ANTI-COLLISION
 	[WOLALIGHT_CABIN_NIGHT]	= {},--
 	}},
+	
+	ColdStartDefaultControls = {
+	[24] = 1, -- Cover
+	[38] = 0.9, -- Canopy
+	[182] = 0.5, -- Airbrake
+	[805] = 1, -- Ladder Draw
+
+}
+
 }
 
 add_aircraft(F6)
