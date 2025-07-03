@@ -17,7 +17,7 @@ dev:listen_command(pylon1Cmd)
 dev:listen_command(pylon2Cmd)
 dev:listen_command(smokeOffCmd)
 
-print_message_to_user("RAVNS SMOKE SYSTEM")
+print_message_to_user("SMOKE SYSTEM ACTIVATED")
 
 -- Internal pylon state tracking: 1 for red smoke, 0 for white smoke, nil for off.
 local currentPylon = nil

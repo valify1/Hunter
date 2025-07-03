@@ -250,22 +250,13 @@ F6 =  {
 			pos 		=  {-3.28,	-0.427,	0.6}, -- nozzle coords -3.234,	-0.427,	0.6
 			elevation   =  0, -- AFB cone elevation
 			diameter	 = 0.1, -- AFB cone diameter
-			smokiness_level		= 	0.50,
-			exhaust_length_ab   = 0.1, -- lenght in m
-			exhaust_length_ab_K = 0.1, -- AB animation
+			smokiness_level		= 	0.35,
+			exhaust_length_ab   = 0.0, -- lenght in m
+			exhaust_length_ab_K = 0.0, -- AB animation
 		}, -- end of [1]
-		[2] = 
-		{
-			pos 		=  {-3.28,	-0.427,	-0.6}, -- nozzle coords -3.234,	-0.427,	-0.6
-			elevation   =  0, -- AFB cone elevation
-			diameter	 = 0.1, -- AFB cone diameter
-			smokiness_level		= 	0.50,
-			exhaust_length_ab   = 0.1, -- lenght in m
-			exhaust_length_ab_K = 0.1, -- AB animation
-		}, -- end of [2]
 	}, -- end of engines_nozzles
 	
-	crew_size	 = 2,
+	crew_size	 = 1,
 	crew_members = 
 	{
 		[1] = 
@@ -275,13 +266,7 @@ F6 =  {
 			pos =  {3.302,0.763,0.000},     --  {2.831,	-0.7,	0}, altitude =2eme parametre
 			canopy_pos = {0,	0,	0},
 		}, -- end of [1]
-		[2] = 
-		{
-			ejection_seat_name = "pilot+ejectionseat",
-			drop_canopy_name = "Rear_Canopy",
-			pos =  {1.231,	0,	0},     --  {2.43,	-0.6,	0}, altitude =2eme parametre
-			canopy_pos = {0,	0,	0},
-		}, -- end of [2]
+		
 	}, -- end of crew_members
 
 	fires_pos = 
@@ -586,16 +571,6 @@ modulation 		= MODULATION_AM
 
 				
 			},-- end of table_data
-			
-			rudder = {
-				[0] = {0.0, 0.0},
-				[50] = {0.2, 0.4},
-				[150] = {0.7, 0.8},
-				[300] = {1.0, 1.0},
-			},-- end of table_data
-			-- M - Mach number
-			-- Pmax - Engine thrust at military power
-			-- Pfor - Engine thrust at AFB
 		}, -- end of engine
 	},
 	--damage , index meaning see in  Scripts\Aircrafts\_Common\Damage.lua
@@ -648,8 +623,8 @@ modulation 		= MODULATION_AM
 	{  
 		[1] = "Hunter-part-wing-R", -- wing R
 		[2] = "Hunter-part-wing-L", -- wing L
-		-- [3] = "Hunter-part-nose", -- Nose
-		-- [4] = "Hunter-part-tail", -- Tail
+		[3] = "Hunter-part-nose", -- Nose
+		[4] = "Hunter-part-tail", -- Tail
 	},
 	
 	lights_data = {
@@ -666,22 +641,22 @@ modulation 		= MODULATION_AM
 						{
                             typename = "argnatostrobelight", argument = 194,
                             controller = "Strobe", mode = 1, power_up_t = 0.1, cool_down_t = 0.0, 
-							period = 2.0, reduced_flash_time = 0.5, phase_shift = 0.5,
+							period = 2.2, reduced_flash_time = 0.5, phase_shift = 0.5,
                         },
 						{
                             typename = "argnatostrobelight", argument = 190,
                             controller = "Strobe", mode = 1, power_up_t = 0.1, cool_down_t = 0.0, 
-							period = 2.0, reduced_flash_time = 0.5, phase_shift = 0.0,
+							period = 2.2, reduced_flash_time = 0.5, phase_shift = 0.0,
                         },
 						{
                             typename = "argnatostrobelight", argument = 191,
                             controller = "Strobe", mode = 1, power_up_t = 0.1, cool_down_t = 0.0, 
-							period = 2.0, reduced_flash_time = 0.5, phase_shift = 0.0,
+							period = 2.2, reduced_flash_time = 0.5, phase_shift = 0.0,
                         },
 						{
                             typename = "argnatostrobelight", argument = 193,
                             controller = "Strobe", mode = 1, power_up_t = 0.1, cool_down_t = 0.0, 
-							period = 2.0, reduced_flash_time = 0.5, phase_shift = 0.0,
+							period = 2.2, reduced_flash_time = 0.5, phase_shift = 0.0,
                         },--Mode 0 ?
 					}
 			},
@@ -725,6 +700,14 @@ modulation 		= MODULATION_AM
 	[24] = 1, -- Cover
 	[38] = 0.9, -- Canopy
 	[182] = 0.5, -- Airbrake
+	[309] = 1, -- Left Outboard Pylon
+	[312] = 1, -- Left Middleboard Pylon
+	[313] = 1, -- Left Inboard Pylon
+	[314] = 1, -- Right Inboard Pylon
+	[315] = 1, -- Right Middleboard Pylon
+	[318] = 1, -- Right Outboard Pylon
+	[320] = 1, -- Right Wingtip Pylon
+	[321] = 1, -- Left Wingtip Pylon
 	[805] = 1, -- Ladder Draw
 
 }
