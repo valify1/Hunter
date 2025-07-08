@@ -1,4 +1,4 @@
-function m3_Mk6(tbl)--4 � 30mm-Maschinenkanone Royal Small Arms Factory ADEN Mk.2 mit je 150 Schuss Munition
+function m3_Mk6(tbl)
 
 	tbl.category = CAT_GUN_MOUNT 
 	tbl.name 	 = "m3_k6"
@@ -151,7 +151,7 @@ F6 =  {
 	DisplayName			= _('Hunter F6'),
 	ViewSettings			= ViewSettings,
 	
-	HumanCockpit 		= false,
+	HumanCockpit 		= true,
 	HumanCockpitPath    = current_mod_path..'/Cockpit/',
 	
 	Picture 			= "Hunter.png",
@@ -162,7 +162,7 @@ F6 =  {
 	{
 		{
 			file  	 = 'Hunter_F6';
-			life  	 = 18; -- lifebar
+			life  	 = 20; -- lifebar
 			vis   	 = 3;  -- visibility gain.
 			desrt    = 'Hunter_F6-destr'; -- Name of destroyed object file name Hunter-destr
 			fire  	 = { 300, 3}; -- Fire on the ground after destoyed: 300sec 2m
@@ -186,10 +186,10 @@ F6 =  {
 	Categories 			= {"{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}", "Interceptor",},	
 	----- Weight & Fuel Characteristics  ------
     
-	M_empty 					= 14742, -- kg
-	M_nominal 					= 20252, -- kg
-	M_max 						= 28122, -- kg
-	M_fuel_max 					= 5510.5, -- kg --Internal fuel
+	M_empty 					= 15000, -- kg
+	M_nominal 					= 18000, -- kg
+	M_max 						= 23359, -- kg
+	M_fuel_max 					= 8000, -- kg --Internal fuel
 	H_max 					 	= 18000, -- m
 	average_fuel_consumption 	= 0.85, -- this is highly relative, but good estimates are 36-40l/min = 28-31kg/min = 0.47-0.52kg/s -- 45l/min = 35kg/min = 0.583kg/s
 	CAS_min 					= 60, -- if this is not OVERAL FLIGHT TIME, but jus LOITER TIME, than it sholud be 10-15 minutes.....CAS capability in minute (for AI)
@@ -256,12 +256,16 @@ F6 =  {
 		}, -- end of [1]
 	}, -- end of engines_nozzles
 	
+ 	sounderName         = "Aircraft/Planes/F6",
+
 	crew_size	 = 1,
 	crew_members = 
 	{
 		[1] = 
 		{
+			drop_canopy_name	 = "Hunter_F6_fonar",
 			ejection_seat_name = "pilot+ejectionseat",
+			canopy_arg           = 38,
 			drop_canopy_name = "Front_Canopy",
 			pos =  {3.302,0.763,0.000},     --  {2.831,	-0.7,	0}, altitude =2eme parametre
 			canopy_pos = {0,	0,	0},
@@ -332,10 +336,7 @@ flare 				= {default = 15, increment = 15, chargeSz = 2}
 	elevation 	= {-50.0, 90.0}-- pilot view vertical (AI)
 },
 
-Sensors = {
-RADAR 			= "AN/APQ-159", -- angepasst F-100 kein RADAR
-RWR 			= "Abstract RWR"--F15
-},
+
 Countermeasures = {
 ECM 			= "AN/ALQ-135" -- no ECM
 },
@@ -355,9 +356,9 @@ Failures = {
 	{ id = 'mfd',  		label = _('MFD'), 		enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },		
 },
 HumanRadio = {
-frequency 		= 251.0,  -- Radio Freq angepasst F104
+frequency 		= 127.5,  -- Radio Freq angepasst F104
 editable 		= true,
-minFrequency	= 225.000, -- angepasst F104
+minFrequency	= 127.5, -- angepasst F104
 maxFrequency 	= 399.979, -- angepasst F104
 modulation 		= MODULATION_AM
 },
@@ -442,7 +443,20 @@ modulation 		= MODULATION_AM
 				{ CLSID    = "{A4BCC903-06C8-47bb-9937-A30FEDB4E745}" }, --Smokewinder - yellow
 			}
 		  ),
-			pylon(3, 0, 0, 0, 0,
+		  	pylon(3, 2, -7.0, -0.20, 0,--SMOKE POD 
+			{
+						connector = "disable",
+						DisplayName = ("CLR SMK")
+			},
+			{
+				{ CLSID    = "{A4BCC903-06C8-47bb-9937-A30FEDB4E741}" }, --Smokewinder - red
+				{ CLSID    = "{A4BCC903-06C8-47bb-9937-A30FEDB4E742}" }, --Smokewinder - green
+				{ CLSID    = "{A4BCC903-06C8-47bb-9937-A30FEDB4E743}" }, --Smokewinder - blue
+				{ CLSID    = "{A4BCC903-06C8-47bb-9937-A30FEDB4E744}" }, --Smokewinder - white
+				{ CLSID    = "{A4BCC903-06C8-47bb-9937-A30FEDB4E745}" }, --Smokewinder - yellow
+			}
+		  ),
+			pylon(4, 0, 0, 0, 0,
 				{
 					arg = 309,
 					arg_value = 0,
@@ -452,7 +466,7 @@ modulation 		= MODULATION_AM
 				},
 				tipsLeft
 			),
-			pylon(4, 0, 0, 0, 0,
+			pylon(5, 0, 0, 0, 0,
 				{
 					arg = 312,
 					arg_value = 0,
@@ -462,7 +476,7 @@ modulation 		= MODULATION_AM
 				},
 				outboardLeft
 			),
-			pylon(5, 0, 0, 0, 0,
+			pylon(6, 0, 0, 0, 0,
 			{
 				arg = 313,
 				arg_value = 0,
@@ -472,7 +486,7 @@ modulation 		= MODULATION_AM
 			},
 			inboard
 		),
-		pylon(6, 0, 0, 0, 0,--
+		pylon(7, 0, 0, 0, 0,--
 			{
 				arg = 314,
 				arg_value = 0,
@@ -482,7 +496,7 @@ modulation 		= MODULATION_AM
 			},
 			inboard
 		),
-			pylon(7, 0, 0, 0, 0,
+			pylon(8, 0, 0, 0, 0,
 				{
 					arg = 315,
 					arg_value = 0,
@@ -492,7 +506,7 @@ modulation 		= MODULATION_AM
 				},
 				outboardRight
 			),
-			pylon(8, 0, 0, 0, 0,
+			pylon(9, 0, 0, 0, 0,
 				{
 					arg = 318,
 					arg_value = 0,
@@ -516,7 +530,7 @@ modulation 		= MODULATION_AM
 			aircraft_task(RunwayAttack),
 			aircraft_task(AntishipStrike),
 	  },	
-	  DefaultTask = aircraft_task(FighterSweep),
+	  DefaultTask = aircraft_task(Nothing),
 	
 	SFM_Data = {
 		aerodynamics = -- Cx = Cx_0 + Cy^2*B2 +Cy^4*B4
@@ -634,10 +648,6 @@ modulation 		= MODULATION_AM
 			[WOLALIGHT_STROBES] = { 
 					typename = "collection",
 					lights = {	
-					--	{typename = "argnatostrobelight",  argument = 193, period = 2.2,  phase_shift = 0.0}, -- Strobe - BANO_0/BANO_00
-					--	{typename = "argnatostrobelight",  argument = 194, period = 2.2,  phase_shift = 0.5}, -- Strobe - BANO_1/BANO_11
-					--	{typename = "argnatostrobelight",  argument = 190, period = 2.2,  phase_shift = 0.0}, -- Strobe 
-					--	{typename = "argnatostrobelight",  argument = 191, period = 2.2,  phase_shift = 0.0}, -- Strobe 
 						{
                             typename = "argnatostrobelight", argument = 194,
                             controller = "Strobe", mode = 1, power_up_t = 0.1, cool_down_t = 0.0, 

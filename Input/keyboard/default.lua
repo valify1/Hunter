@@ -28,7 +28,8 @@ join(res.keyCommands,{
 -- Systems
 {combos = {{key = 'R'}}, down = iCommandPlaneFuelOn, up = iCommandPlaneFuelOff, name = 'Fuel Dump', category = 'Systems'},
 {combos = {{key = 'R', reformers = {'LCtrl'}}}, down = iCommandPlaneAirRefuel, name = 'Refueling Boom', category = 'Systems'},
-{combos = {{key = 'C', reformers = {'LCtrl'}}}, down = iCommandPlaneFonar, name = _('Canopy Open/Close'), category = _('Systems')},
+{combos = {{key = 'C', reformers = {'LCtrl'}}},down = iCommandPlaneFonar, name = _('Canopy Open/Close'),category = {_('Systems')}},
+{down = iCommandPlaneStrobeLightOnOff,			name = _('Strobe lights'),			category = _('Systems')},
 --{combos = {{key = 'R', reformers = {'LAlt'}}}, down = iCommandPlaneJettisonFuelTanks, name = 'Jettison Fuel Tanks', category = 'Systems'},
 
 -- Modes

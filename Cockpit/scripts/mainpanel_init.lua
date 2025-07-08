@@ -45,18 +45,11 @@ Manche.arg_number				= 114
 Manche.input					= {-100.0, 100.0}
 Manche.output					= {-100.0, 100.0}
 
-CANOPY							= CreateGauge("parameter")
-CANOPY.parameter_name  		 	= "CANOPY_STATUS"
-CANOPY.arg_number				= 181
-CANOPY.input					= {0.0, 0.899}
-CANOPY.output					= {0.0, 0.9}
-CANOPY.controller				= controllers.base_gauge_CanopyPos
-
-CANOPYSWITCH					= CreateGauge("parameter")
-CANOPYSWITCH.parameter_name  	= "CANOPY_COMMAND"
-CANOPYSWITCH.arg_number			= 99
-CANOPYSWITCH.input				= {0.0, 1.0}
-CANOPYSWITCH.output				= {0.0, 1.0}
+Canopy    						= CreateGauge()
+Canopy.arg_number 				= 181
+Canopy.input   					= {0,1}
+Canopy.output  					= {0,0.9}
+Canopy.controller 				= controllers.base_gauge_CanopyPos
 
 StickPitch							= CreateGauge()
 StickPitch.arg_number				= 2

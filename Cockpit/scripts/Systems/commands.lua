@@ -121,7 +121,7 @@ function SetCommand(command,value)
 	end
 	if command == TrimNeutral then
 		TrimIndicator = 0
-	
+	end
 -- local p_gearstate = get_param_handle("GEARSTATE") --Any examples of this? I don't remember...
 -- local fmparams = get_param_handle("FM_Params")
 -- fmparams:set(string.format("%sGEARSTATE;",fmparams:get()))

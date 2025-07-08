@@ -15,6 +15,7 @@ join(res.keyCommands,{
 -- Smoke System,
 {	down = 11011, name = ('White Smoke'), category = ('Smoke') },
 {	down = 11008, name = ('Red Smoke'), category = ('Smoke') },
+{	down = 11010, name = ('Colour Smoke'), category = ('Smoke') },
 
 -- Autopilot
 {down = iCommandPlaneAutopilot, name    		= 'LAAP Engage/Disengage'     , category = 'LASTE Control Panel'},

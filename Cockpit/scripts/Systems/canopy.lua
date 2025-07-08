@@ -1,72 +1,83 @@
-local dev 	    = GetSelf()
+--Thanks to A-4 Team for help with this!!!
+local dev = GetSelf()
 
---debug_output_file = io.open("./Systems.log", "wa")
---debug_output_file:write("Démarrage Systems\r\n")
+dofile(LockOn_Options.script_path.."devices.lua")
+dofile(LockOn_Options.script_path.."command_defs.lua")
 
-local update_time_step = 0.032 --0.1
-make_default_activity(update_time_step) --update will be called 10 times per second
+local update_time_step = 0.02  --50 time per second
+make_default_activity(update_time_step)
 
-local AircraftIsOnGround = get_param_handle("AircraftIsOnGround")
+local sensor_data = get_base_data()
 
--- Variables
-local L_COCKPIT = get_param_handle("L_COCKPIT")
-local LIB_COCKPIT = get_param_handle("LIB_COCKPIT")
-local CANOPY_STATUS = get_param_handle("CANOPY_STATUS")
-local CANOPY_COMMAND = get_param_handle("CANOPY_COMMAND")
+local Canopy = 71 -- This is the number of the command from command_defs
 
-local CockpitOnOff 		= 181
-local CockpitIsOpen 	= 1
-local CANOPYSTATUS		= 0
-local Verriere 			= 3069
-local nPas				= 0.01 --0.02
+local CanopyMaster = Keys.Canopy
 
-CANOPY_STATUS:set(0.0)
-CANOPY_COMMAND:set(0)
-LIB_COCKPIT:set("")
+--Creating local variables
+local initial_canopy = get_aircraft_draw_argument_value(38)
+local CANOPY_COMMAND	=	0   -- 0 closing, 1 opening, 2 jettisoned
 
--- Initialisation
-dev:listen_command(CockpitOnOff)
-dev:listen_command(Verriere)
+local IAS			    = get_param_handle("CURRENTV")
 
-function SetCommand(command,value)			
-	-- CANOPY
-	if command == CockpitOnOff or command == Verriere then
-		if (CockpitIsOpen == 1) then
-			CANOPY_COMMAND:set(1)
-			CockpitIsOpen = 0
-		else
-			CANOPY_COMMAND:set(0)
-			CockpitIsOpen = 1
-		end
-	end	
+dev:listen_command(Canopy)
+dev:listen_command(Keys.Canopy)
+
+function post_initialize()
+
+	if (initial_canopy > 0) then
+		CANOPY_COMMAND = 1
+	end
+
+	local birth = LockOn_Options.init_conditions.birth_place
+    
+	if birth=="GROUND_HOT" or birth=="AIR_HOT" then --"GROUND_COLD","GROUND_HOT","AIR_HOT"
+        CANOPY_COMMAND = 0
+    elseif birth=="GROUND_COLD" then
+        CANOPY_COMMAND = 1
+    end
+
 end
 
-function update()
-	L_COCKPIT:set(CockpitIsOpen)
-	if AircraftIsOnGround:get() > 0.5 then
-		if L_COCKPIT:get() == 1 then
-			LIB_COCKPIT:set("Open")
-			--OPEN instruction
-			if CANOPYSTATUS < 0.890 then
-				CANOPYSTATUS = CANOPYSTATUS + nPas
-			else
-				CANOPYSTATUS = CANOPYSTATUS
-			end
-		else
-			LIB_COCKPIT:set("")
-			--CLOSE instruction
-			if CANOPYSTATUS > 0 then
-				CANOPYSTATUS = CANOPYSTATUS - nPas
-			else
-				CANOPYSTATUS = CANOPYSTATUS
-			end
-		end	
-		
-		CANOPY_STATUS:set(CANOPYSTATUS)
-		
-
+function SetCommand(command,value)			
+	
+	if (command == Canopy) then
+		--print_message_to_user("IF YOU SEE THIS THEN THE CANOPY SHOULD FUCKING OPEN AND CLOSE!!!!!!!!!")
+        if CANOPY_COMMAND <= 1 then -- only toggle while not jettisoned
+            CANOPY_COMMAND = 1-CANOPY_COMMAND --toggle
+			--CANOPY_COMMAND = 0.99 --toggle
+        end
 
 	end
 end
 
-need_to_be_closed = false -- close lua state after initialization
+local prev_canopy_val = -1
+
+function update()
+	
+	local curvalue = get_aircraft_draw_argument_value(38)
+    
+	if curvalue > 0.95 then
+        CANOPY_COMMAND = 2 -- jetissoned
+    end
+	
+	if (CANOPY_COMMAND == 0 and curvalue > 0) then
+		-- lower canopy in increments of 0.01 (50x per second)
+		curvalue = curvalue - 0.01
+        set_aircraft_draw_argument_value(38,curvalue)
+	elseif (CANOPY_COMMAND == 1 and curvalue <= 0.89) then
+        -- raise canopy in increment of 0.01 (50x per second)
+		curvalue = curvalue + 0.01
+        set_aircraft_draw_argument_value(38,curvalue)
+	end
+
+	local cockpit_lever=get_cockpit_draw_argument_value(181)
+    if prev_canopy_val ~= cockpit_lever then
+        local canopy_lever_clickable_ref = get_clickable_element_reference("CANOPY_PNT")
+        canopy_lever_clickable_ref:update() -- ensure the connector moves too
+        prev_canopy_val = cockpit_lever
+    end
+	
+    
+end
+
+need_to_be_closed = false

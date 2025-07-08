@@ -62,10 +62,9 @@ dofile(current_mod_path..'/Hunter.lua')
 
 
 
-local cfg_path = current_mod_path .. "/FM/config.lua"
+
+local cfg_path = current_mod_path ..  "/FM/config.lua"
 dofile(cfg_path)
-
-
 F15FM.old = 6
 make_flyable('Hunter F6', current_mod_path..'/Cockpit/Scripts/', F15FM, current_mod_path..'/comm.lua')
 
