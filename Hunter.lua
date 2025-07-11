@@ -188,23 +188,25 @@ F6 =  {
     
 	M_empty 					= 15000, -- kg
 	M_nominal 					= 18000, -- kg
-	M_max 						= 23359, -- kg
+	M_max 						= 27354, -- kg
 	M_fuel_max 					= 8000, -- kg --Internal fuel
 	H_max 					 	= 18000, -- m
 	average_fuel_consumption 	= 0.85, -- this is highly relative, but good estimates are 36-40l/min = 28-31kg/min = 0.47-0.52kg/s -- 45l/min = 35kg/min = 0.583kg/s
 	CAS_min 					= 60, -- if this is not OVERAL FLIGHT TIME, but jus LOITER TIME, than it sholud be 10-15 minutes.....CAS capability in minute (for AI)
-	V_opt 						= 257,-- Cruise speed (for AI)
-	V_take_off 					= 91, -- Take off speed in m/s (for AI)
-	V_land 						= 77, -- Land speed in m/s (for AI)
-	V_max_sea_level 			= 400, -- Max speed at sea level in m/s (for AI)
-	V_max_h 					= 612, -- Max speed at max altitude in m/s (for AI)
-	Vy_max 						= 210, -- Max climb speed in m/s (for AI)
-	Mach_max 					= 2.23, -- Max speed in Mach (for AI)
-	Ny_min 						= -3, -- Min G (for AI)
-	Ny_max 						= 6.5,  -- Max G (for AI)
-	Ny_max_e 					= 8.5,  -- Max G (for AI)
-	AOA_take_off 				= 0.20, -- AoA in take off (for AI)
-	bank_angle_max 				= 85, -- Max bank angle (for AI)
+	V_opt 						=	254,		-- Cruise speed (for AI)* (m/s)
+	V_take_off 					=	61, 		-- Take off speed in m/s (for AI)*	(122)
+	V_land 						=	71, 		-- Land speed in m/s (for AI)
+	V_max_sea_level 			=	411,		-- Max speed at sea level in m/s (for AI)
+	V_max_h 					=	736.11 ,	-- Max speed at max altitude in m/s (for AI)
+	Vy_max 						=	275, 		-- Max climb speed in m/s (for AI)
+	Mach_max 					=	2.45, 	    -- Max speed in Mach (for AI)
+	Ny_min 						=	-3, 		-- Min G (for AI)
+	Ny_max 						=	8.0,		-- Max G (for AI)
+	Ny_max_e 					=	8.0, 		-- ?? Max G (for AI)
+	AOA_take_off 				=	0.16,		-- AoA in take off radians (for AI)
+	bank_angle_max 				=	60,			-- Max bank angle (for AI)
+	flaps_maneuver 				=	1,			-- Max flaps in take-off and maneuver (0.5 = 1st stage; 1.0 = 2nd stage) (for AI)
+	range 						=	2540,		-- Max range in km (for AI)
 
 
 	has_afteburner 				= false, -- AFB yes/no
@@ -417,7 +419,7 @@ modulation 		= MODULATION_AM
 	
 			stores_number =	3,  
 			Pylons = {
-				pylon(1, 2, -7.0, -0.2, 0,--SMOKE POD 
+				pylon(1, 2, -9.23,	0,	0,--SMOKE POD 
 				{
 							connector = "disable",
 							DisplayName = ("W SMK")
@@ -430,7 +432,7 @@ modulation 		= MODULATION_AM
 					{ CLSID    = "{A4BCC903-06C8-47bb-9937-A30FEDB4E745}" }, --Smokewinder - yellow
 				}
 			),
-			pylon(2, 2, -7.0, -0.20, 0,--SMOKE POD 
+			pylon(2, 2, -9.23,	0,	0,--SMOKE POD 
 			{
 						connector = "disable",
 						DisplayName = ("R SMK")
@@ -443,7 +445,7 @@ modulation 		= MODULATION_AM
 				{ CLSID    = "{A4BCC903-06C8-47bb-9937-A30FEDB4E745}" }, --Smokewinder - yellow
 			}
 		  ),
-		  	pylon(3, 2, -7.0, -0.20, 0,--SMOKE POD 
+		  	pylon(3, 2, -9.23,	0,	0,--SMOKE POD 
 			{
 						connector = "disable",
 						DisplayName = ("CLR SMK")
@@ -532,61 +534,103 @@ modulation 		= MODULATION_AM
 	  },	
 	  DefaultTask = aircraft_task(Nothing),
 	
-	SFM_Data = {
-		aerodynamics = -- Cx = Cx_0 + Cy^2*B2 +Cy^4*B4
+	SFM_Data =
+	{	
+		aerodynamics = 
 		{
-			Cy0 = 0.0,              -- Lift coefficient at zero AoA
-			Mzalfa = 3.2,           -- Pitch moment slope vs AoA
-			Mzalfadt = 0.9,         -- Pitch damping
-			kjx = 1.8,              -- Roll inertia factor
-			kjz = 1,              -- Yaw inertia factor
-			Czbe = 0,           -- Sideforce from sideslip
-			cx_gear = 0.015,        -- Gear drag
-			cx_flap = 0.07,         -- Flap drag
-			cy_flap = 0.4,          -- Flap lift
-			cx_brk = 0.12,          -- Airbrake drag
-    table_data = {
-      --      M     Cx0  Cya   B     B4    Omxmax ALD     Cymax
-      [1] = {0.0,  0.025, 0.06, 0.032, 0.04, 1.7,  20.0,   1.2},
-      [2] = {0.2,  0.026, 0.07, 0.034, 0.05, 1.8,  19.5,   1.3},
-      [3] = {0.4,  0.027, 0.08, 0.036, 0.06, 2.0,  18.0,   1.35},
-      [4] = {0.6,  0.028, 0.09, 0.038, 0.07, 2.1,  17.5,   1.4},
-      [5] = {0.8,  0.029, 0.095,0.039, 0.08, 2.1,  16.5,   1.35},
-      [6] = {1.0,  0.030, 0.10, 0.040, 0.085, 1.6, 15.0,   1.2},
-      [7] = {1.2,  0.035, 0.095,0.041, 0.09,  1.3, 13.0,   1.0},
-    },
-  },
-
-  engine = {
-    Nmg = 40.0,        -- Rotor RPM at idle (not used in jet but needed)
-    MinRUD = 0.0,
-    MaxRUD = 1.0,
-    MaksRUD = 0.85,
-    ForsRUD = 0.93,
-    type = "TurboJet",
-    hMaxEng = 19000.0,
-    dcx_eng = 0.0114,
-    cemax = 1.24,       -- Max thrust coef
-    cefor = 2.48,       -- Afterburner thrust coef (Hunter didn't have one; leave 0 or close)
-    dpdh_m = 1700.0,
-    dpdh_f = 2100.0,
- 
-			
-			hMaxEng	=	19, -- Max altitude for safe engine operation in km
-			dcx_eng	=	0.015, -- Engine drag coefficient 0.015
-			cemax	=	1.24, -- not used for fuel calculation , only for AI routines to check flight time ( fuel calculation algorithm is built in )
-			cefor	=	2.56, -- not used for fuel calculation , only for AI routines to check flight time ( fuel calculation algorithm is built in )
-			dpdh_m	=	2000, --  altitude coefficient for max thrust 6600
-			dpdh_f	=	16200,  --  altitude coefficient for AB thrust
+			Cy0			=	0,
+			Mzalfa		=	6,
+			Mzalfadt	=	1,
+			kjx			=	2.95,
+			kjz			=	0.00125,
+			Czbe		=	-0.016,
+			cx_gear		=	0.0268,
+			cx_flap		=	0.05,
+			cy_flap		=	0.52,
+			cx_brk		=	0.06,
+            
+            -------------------- Drag Polar Coefficients ---------------------------------------
+			-- Cx = Cx_0 + Cy^2*B2 +Cy^4*B4
+			-- It appears this really provides us with a good way to tune turn rate performance
+			-- and provides us with how much drag we build up for a given amount of lift we make
+			-- Drag polars were tuned from the flight manual and testing with correct max sustained
 			table_data = 
-			{		--   M		Pmax		 Pfor	
-				[1] = 	{0.0,	28000,	35000},
-				[2] = 	{0.6,	35000,	37000},
+			{
+                --      M		Cx0			Cya		    B		B4		    Omxmax	Aldop		Cymax
+				[1] = 	{0,	    0.0151,	    0.07,	    0.134,	0.0567,	    0.5,	30,	        1.1},
+				[2] = 	{0.2,	0.0154,	    0.07,	    0.134,	0.056,	    1.5,	30,	        1.1},
+				[3] = 	{0.4,	0.0156,	    0.07,	    0.129,	0.0549,	    2.5,	30,	        1.1},
+				[4] = 	{0.6,	0.0164,	    0.073,	    0.12,	0.0474,	    3.5,	30,	        1.1},
+				[5] = 	{0.7,	0.0172,	    0.076,	    0.105,	0.052,	    3.5,	28.6666667,	1.091},
+				[6] = 	{0.8,	0.0201,	    0.079,	    0.11,	0.0607,	    3.5,	27.3333333,	1.082},
+				[7] = 	{0.9,	0.0284,	    0.083,	    0.139,	0.0666,	    3.5,	26,	        1.073},
+				[8] = 	{1.0,	0.0387,	    0.085,	    0.174,	0.073,	    3.5,	24.6666667,	1.064},
+				[9] = 	{1.05,	0.0416,	    0.0855,	    0.1965,	0.07685,	3.5,	24,	        1.06},
+				[10] = 	{1.1,	0.0445,	    0.086,	    0.219,	0.0807,	    3.15,	18,	        1.04},
+				[11] = 	{1.2,	0.0462,	    0.083,	    0.3,	0.066,	    2.45,	17,	        1.02},
+				[12] = 	{1.3,	0.04536,	0.077,	    0.344,	0.0594,	    1.75,	16,	        1},
+				[13] = 	{1.4,	0.0432,	    0.0695,	    0.393,	0.0553,	    1.625,	14.5,	    0.95},
+				[14] = 	{1.5,	0.0429,	    0.063625,	0.4505,	0.0521,	    1.5,	13,	        0.9},
+				[15] = 	{1.6,	0.0426,	    0.05775,	0.508,	0.0489,	    1.2,	12.5,	    0.8},
+				[16] = 	{1.7,	0.04145,	0.051875,	0.615,	0.52445,	0.9,	12,	        0.7},
+				[17] = 	{1.8,	0.0403,	    0.046,	    0.722,	1,	        0.86,	11.4,	    0.64},
+				[18] = 	{2.2,	0.0377,	    0.034,	    1,	    1,	        0.7,	9,	        0.4},
+				[19] = 	{2.35,	0.0377,	    0.033,	    1,	    1,	        0.7,	9,	        0.4},
+				[20] = 	{3.9,	0.0377,	    0.033,	    1,	    1,	        0.7,	9,	        0.4},
+			}, -- end of table_data
+            -- M - Mach number
+			-- Cx0 - Coefficient, drag, profile, of the airplane
+			-- Cya - Normal force coefficient of the wing and body of the aircraft in the normal direction to that of flight. Inversely proportional to the available G-loading at any Mach value. (lower the Cya value, higher G available) per 1 degree AOA
+			-- B - Polar quad coeff
+			-- B4 - Polar 4th power coeff
+			-- Omxmax - roll rate, rad/s
+			-- Aldop - Alfadop Max AOA at current M - departure threshold
+			-- Cymax - Coefficient, lift, maximum possible (ignores other calculations if current Cy > Cymax)
+		}, -- end of aerodynamics
+		
+		engine = 
+		{
+			Nmg		=	71.6,
+			Nominal_RPM		= 14000.0,
+			Nominal_Fan_RPM	= 10000.0,
+			Startup_Prework = 10.0,
+			Startup_Duration = 40.0,
+			Shutdown_Duration = 35.0,
+			MinRUD	=	0,
+			MaxRUD	=	1,
+			MaksRUD	=	0.965,
+			ForsRUD	=	1.000,
+			type	=	"TurboFan",
+			hMaxEng	=	19,
+			dcx_eng	=	0.0114,
+			cemax	=	1.24,
+			cefor	=	2.56,
+			dpdh_m	=	8000,
+			dpdh_f	=	17000,
+			table_data = 
+			{
 
-				
-			},-- end of table_data
+				[1] = 	{0,	    1.24 * 114330,	1.22 * 156000},
+				[2] = 	{0.2,	1.24 * 108000,	1.22 * 160000},
+				[3] = 	{0.4,	1.24 * 98000,	1.22 * 170000},
+				[4] = 	{0.6,	1.24 * 105000,	1.22 * 181000},
+				[5] = 	{0.7,	1.24 * 110000,	1.22 * 205000},
+				[6] = 	{0.8,	1.24 * 118000,	1.22 * 220000},
+				[7] = 	{0.9,	1.24 * 124000,	1.22 * 257000},
+				[8] = 	{1.0,	1.24 * 130000,	1.22 * 272000},
+				[9] = 	{1.1,	1.24 * 130000,	1.22 * 279000},
+				[10] = 	{1.2,	1.24 * 125000,	1.22 * 283000},
+				[11] = 	{1.3,	1.24 * 123000,	1.22 * 293000},
+				[12] = 	{1.4,	1.24 * 130000,	1.22 * 302000},
+				[13] = 	{1.6,	1.24 * 132000,	1.22 * 323000},
+				[14] = 	{1.8,	1.24 * 128000,	1.22 * 348000},
+				[15] = 	{2.2,	1.24 * 110000,	1.22 * 370000},
+				[16] = 	{2.5,	1.24 * 82000,	1.22 * 392000},
+				[17] = 	{3.9,	1.24 * 82000,	1.22 * 310000},
+			}, -- end of table_data
 		}, -- end of engine
-	},
+		
+	},-- end of SFM_Data
 	--damage , index meaning see in  Scripts\Aircrafts\_Common\Damage.lua
 	Damage = {
 		[0]  = {critical_damage = 5,  args = {146}},--NOSE_CENTER
