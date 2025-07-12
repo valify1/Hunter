@@ -218,11 +218,11 @@ suspension 			= {
 
 
 local FM = {  self_ID, 
-             'Extra330SR' ,
+             'Hunter F6' ,
 			  old = false,
 			center_of_mass		= {-0.172  ,  -0.6,	   0},--x,y,z
 			moment_of_inertia 	= {4811 , 80900, 79465,-350},--Ix,Iy,Iz,Ixy// Ixy geschätzt
-			suspension = suspenion,
+			suspension = suspension,
 }
 F15FM.old = 6
 

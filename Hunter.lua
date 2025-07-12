@@ -145,6 +145,8 @@ local inboard 	= {
 }
 
 
+
+
 F6 =  {
         
 	Name 				=   'Hunter F6',
@@ -178,27 +180,27 @@ F6 =  {
 	},
 
 	
-	net_animation = {
-        0, -- front gear
-		2,  -- nose wheel steering
+	net_animation = -- transmit animations over network (multiplayer)
+	{
+        0, -- nose gear
+		1, -- nose suspension
+		2, -- nose wheel steering
         3, -- right gear
+		4, -- right suspension
         5, -- left gear
+		6, -- left suspension
         9, -- right flap
         10, -- left flap
         11, -- right aileron
         12, -- left aileron
-		13, -- right slat
-		14, -- left slat
         15, -- right elevator
-        16, -- left elevator
         17, -- rudder
-        21, -- SFM air brake
-        25, -- tail hook
+        21, -- air brake
+        38, -- canopy
 		28, -- nachbrenner
 		35, --	brakeshute
 		36, --	brakeshute
 		37, --	brakeshute
-        38, -- canopy
 		89, -- Triebwerk
 		182, -- air brake
         190, -- left (red) navigation wing-tip light
@@ -243,7 +245,7 @@ F6 =  {
 	has_afteburner 				= false, -- AFB yes/no
 	has_speedbrake 				= true, -- Speedbrake yes/no
 	
-	nose_gear_pos 				                = {3.745, -1.700, 0},   -- position of gear
+	nose_gear_pos 				                = {3.745, -1.730, 0},   -- position of gear
 	    nose_gear_amortizer_direct_stroke   		=  0.000,  -- down from nose_gear_pos
 	    nose_gear_amortizer_reversal_stroke  		=  -0.160,  -- up 0.161m 3D Modell MK6
 	    nose_gear_amortizer_normal_weight_stroke 	=  -0.110,   -- up

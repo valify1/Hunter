@@ -8,7 +8,7 @@ declare_loadout({
 	CLSID = "{Hunter_F6_1000R_ptb}",
 	attribute = {wsType_Air,wsType_Free_Fall,wsType_FuelTank,WSTYPE_PLACEHOLDER},
 	Picture = "PTB.png",
-	displayName = _("Fuel tank 675 Liter"),
+	displayName = _("Fuel tank 675 Litre Right"),
 	Weight_Empty = 	50 + pylon_mass, -- Kg
 	Weight = 		50 + 590 + pylon_mass, -- Kg
 	Capacity = 		590,
@@ -35,7 +35,7 @@ declare_loadout({
 	CLSID = "{Hunter_F6_500R_ptb}",
 	attribute = {wsType_Air,wsType_Free_Fall,wsType_FuelTank,WSTYPE_PLACEHOLDER},
 	Picture = "PTB.png",
-	displayName = _("Fuel tank 455 Liter"),
+	displayName = _("Fuel tank 455 Litre Right"),
 	Weight_Empty = 	50 + pylon_mass, -- Kg
 	Weight = 		50 + 414 + pylon_mass, -- Kg
 	Capacity = 		414,
@@ -62,7 +62,7 @@ declare_loadout({
 	CLSID = "{Hunter_F6_1000L_ptb}",
 	attribute = {wsType_Air,wsType_Free_Fall,wsType_FuelTank,WSTYPE_PLACEHOLDER},
 	Picture = "PTB.png",
-	displayName = _("Fuel tank 675 Liter"),
+	displayName = _("Fuel tank 675 Litre Left"),
 	Weight_Empty = 	50 + pylon_mass, -- Kg
 	Weight = 		50 + 590 + pylon_mass, -- Kg
 	Capacity = 		590,
@@ -89,7 +89,7 @@ declare_loadout({
 	CLSID = "{Hunter_F6_500L_ptb}",
 	attribute = {wsType_Air,wsType_Free_Fall,wsType_FuelTank,WSTYPE_PLACEHOLDER},
 	Picture = "PTB.png",
-	displayName = _("Fuel tank 455 Liter"),
+	displayName = _("Fuel tank 455 Litre Left"),
 	Weight_Empty = 	50 + pylon_mass, -- Kg
 	Weight = 		50 + 414 + pylon_mass, -- Kg
 	Capacity = 		414,
