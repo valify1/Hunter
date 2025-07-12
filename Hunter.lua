@@ -245,7 +245,7 @@ F6 =  {
 	has_afteburner 				= false, -- AFB yes/no
 	has_speedbrake 				= true, -- Speedbrake yes/no
 	
-	nose_gear_pos 				                = {3.745, -1.730, 0},   -- position of gear
+	nose_gear_pos 				                = {3.745, -1.695, 0},   -- position of gear
 	    nose_gear_amortizer_direct_stroke   		=  0.000,  -- down from nose_gear_pos
 	    nose_gear_amortizer_reversal_stroke  		=  -0.160,  -- up 0.161m 3D Modell MK6
 	    nose_gear_amortizer_normal_weight_stroke 	=  -0.110,   -- up
