@@ -210,6 +210,7 @@ F6 =  {
         199, -- anticollision (flashing red) bottom light
     	208, -- taxi light (white) right main gear door
 		209, -- taxi light (white) right main gear door
+		805, -- ladder
     },
 
 
@@ -623,7 +624,7 @@ modulation 		= MODULATION_AM
 		
 		engine = 
 		{
-			Nmg		=	71.6,
+			Nmg		=	40,
 			Nominal_RPM		= 14000.0,
 			Nominal_Fan_RPM	= 10000.0,
 			Startup_Prework = 10.0,
@@ -797,7 +798,7 @@ modulation 		= MODULATION_AM
 	[321] = 1, -- Left Wingtip Pylon
 	[805] = 1, -- Ladder Draw
 
-}
+	}
 
 }
 

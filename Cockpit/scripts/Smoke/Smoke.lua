@@ -86,11 +86,11 @@ end
 
 function getColorName(station)
     if station == 1 then
-        return "SMK RED"
+        return "SMOKE RED"
     elseif station == 0 then
-        return "SMK WHITE"
+        return "SMOKE WHITE"
     elseif station == 2 then
-        return "SMK COLOUR"
+        return "SMOKE COLOUR"
     else
     end
 end
