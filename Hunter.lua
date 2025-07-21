@@ -58,7 +58,7 @@ local tipsLeft 		= {
 	--{ CLSID = "{907D835F-E650-4154-BAFD-C656882555C0}" ,arg_value = 0.0}, -- lau_88 AGM-65K
 	{ CLSID = "{LAU3_FFAR_MK1HE}"					   	,arg_value = 0.0},--19xFFAR Mk1-HE Rockets
 	{ CLSID = "{LAU3_FFAR_MK5HEAT}"					   	,arg_value = 0.0},--19xFFAR Mk1-HEAT Rockets
-	{ CLSID = "{Hunter_F6_500L_ptb}" ,arg_value = 0.0,attach_point_position = {0.0, 0.0 , 0.0 } },--Tank Mk6
+	{ CLSID = "{Hunter_F6_500L_ptb}" 					,arg_value = 0.0},--Tank Mk6
 	{ CLSID = "<CLEAN>"								   ,arg_value = 1},
 }
 
@@ -79,7 +79,7 @@ local tipsRight 		= {
 	--{ CLSID = "{907D835F-E650-4154-BAFD-C656882555C0}" ,arg_value = 0.0}, -- lau_88 AGM-65K
 	{ CLSID = "{LAU3_FFAR_MK1HE}"					   	,arg_value = 0.0},--19xFFAR Mk1-HE Rockets
 	{ CLSID = "{LAU3_FFAR_MK5HEAT}"					   	,arg_value = 0.0},--19xFFAR Mk1-HEAT Rockets
-	{ CLSID = "{Hunter_F6_500R_ptb}" ,arg_value = 0.0,attach_point_position = {0.0, 0.0 , 0.0 } },--Tank Mk6
+	{ CLSID = "{Hunter_F6_500R_ptb}" 					,arg_value = 0.0},--Tank Mk6
 	{ CLSID = "<CLEAN>"								   ,arg_value = 1},
 }
 
@@ -99,8 +99,8 @@ local outboardLeft 	= {
 	--{ CLSID = "{907D835F-E650-4154-BAFD-C656882555C0}" ,arg_value = 0.0}, -- lau_88 AGM-65K
 	{ CLSID = "{LAU3_FFAR_MK1HE}"					   	,arg_value = 0.0},--19xFFAR Mk1-HE Rockets
 	{ CLSID = "{LAU3_FFAR_MK5HEAT}"					   	,arg_value = 0.0},--19xFFAR Mk1-HEAT Rockets
-	{ CLSID = "{Hunter_F6_500L_ptb}" ,arg_value = 0.0,attach_point_position = {0.0, 0.0 , 0.0 } },--Tank Mk6
-	{ CLSID = "{Hunter_F6_1000L_ptb}" ,arg_value = 0.7,attach_point_position = {0.0, 0.0 , 0.0 } },--Tank Mk6 0.5 or 0.7
+	{ CLSID = "{Hunter_F6_500L_ptb}" 					,arg_value = 0.0},--Tank Mk6 
+	{ CLSID = "{Hunter_F6_1000L_ptb}" 					,arg_value = 0.7},--Tank Mk6 0.5 or 0.7
 	{ CLSID = "<CLEAN>"								   ,arg_value = 1},
 }
 
@@ -120,8 +120,8 @@ local outboardRight 	= {
 	--{ CLSID = "{907D835F-E650-4154-BAFD-C656882555C0}" ,arg_value = 0.0}, -- lau_88 AGM-65K
 	{ CLSID = "{LAU3_FFAR_MK1HE}"					   	,arg_value = 0.0},--19xFFAR Mk1-HE Rockets
 	{ CLSID = "{LAU3_FFAR_MK5HEAT}"					   	,arg_value = 0.0},--19xFFAR Mk1-HEAT Rockets
-	{ CLSID = "{Hunter_F6_500R_ptb}" ,arg_value = 0.0,attach_point_position = {0.0, 0.0 , 0.0 } },--Tank Mk6
-	{ CLSID = "{Hunter_F6_1000R_ptb}" ,arg_value = 0.7,attach_point_position = {0.0, 0.0 , 0.0 } },--Tank Mk6 0.5 or 0.7
+	{ CLSID = "{Hunter_F6_500R_ptb}" 					,arg_value = 0.0},--Tank Mk6 
+	{ CLSID = "{Hunter_F6_1000R_ptb}" 					,arg_value = 0.7},--Tank Mk6 0.5 or 0.7
 	{ CLSID = "<CLEAN>"								   ,arg_value = 1},
 }
 
@@ -143,9 +143,6 @@ local inboard 	= {
 	--{ CLSID = "{907D835F-E650-4154-BAFD-C656882555C0}" ,arg_value = 0.0}, -- lau_88 AGM-65K
 	{ CLSID = "<CLEAN>"								   	,arg_value = 1},
 }
-
-
-
 
 F6 =  {
         
@@ -170,6 +167,8 @@ F6 =  {
 			fire  	 = { 300, 3}; -- Fire on the ground after destoyed: 300sec 2m
 			username = 'Hunter F6';
 			index    =  WSTYPE_PLACEHOLDER;
+			positioning	= "BYNORMAL";
+			classname = "lLandPlane";
 		},
 		{
 			name  = "Hunter_F6-destr";
@@ -179,39 +178,40 @@ F6 =  {
 
 	},
 
-	
-	net_animation = -- transmit animations over network (multiplayer)
+	country_of_origin = "UK",
+
+	net_animation =
 	{
-        0, -- nose gear
-		1, -- nose suspension
-		2, -- nose wheel steering
+        0, -- front gear
+		2,  -- nose wheel steering
         3, -- right gear
-		4, -- right suspension
         5, -- left gear
-		6, -- left suspension
-        9, -- right flap
-        10, -- left flap
-        11, -- right aileron
-        12, -- left aileron
-        15, -- right elevator
-        17, -- rudder
-        21, -- air brake
-        38, -- canopy
+        --9, -- right flap
+        --10, -- left flap
+        --11, -- right aileron
+        --12, -- left aileron
+		--13, -- right slat
+		--14, -- left slat
+        --15, -- right elevator
+        --16, -- left elevator
+        --17, -- rudder
+        --21, -- SFM air brake
+        --25, -- tail hook
 		28, -- nachbrenner
 		35, --	brakeshute
 		36, --	brakeshute
 		37, --	brakeshute
+        --38, -- canopy
 		89, -- Triebwerk
-		182, -- air brake
-        190, -- left (red) navigation wing-tip light
-        191, -- right (green) navigation wing-tip light
-        192, -- tail (white) light
-        198, -- anticollision (flashing red) top light
-        199, -- anticollision (flashing red) bottom light
-    	208, -- taxi light (white) right main gear door
-		209, -- taxi light (white) right main gear door
-		805, -- ladder
-    },
+		--182, -- air brake
+        --190, -- left (red) navigation wing-tip light
+        --191, -- right (green) navigation wing-tip light
+        --192, -- tail (white) light
+        --198, -- anticollision (flashing red) top light
+        --199, -- anticollision (flashing red) bottom light
+        --208, -- taxi light (white) right main gear door
+		--209, -- taxi light (white) right main gear door
+    },	
 
 
 					
@@ -220,13 +220,13 @@ F6 =  {
 	Categories 			= {"{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}", "Interceptor",},	
 	----- Weight & Fuel Characteristics  ------
     
-	M_empty 					= 15000, -- kg
-	M_nominal 					= 18000, -- kg
-	M_max 						= 27354, -- kg
-	M_fuel_max 					= 8000, -- kg --Internal fuel
-	H_max 					 	= 18000, -- m
-	average_fuel_consumption 	= 0.85, -- this is highly relative, but good estimates are 36-40l/min = 28-31kg/min = 0.47-0.52kg/s -- 45l/min = 35kg/min = 0.583kg/s
-	CAS_min 					= 60, -- if this is not OVERAL FLIGHT TIME, but jus LOITER TIME, than it sholud be 10-15 minutes.....CAS capability in minute (for AI)
+	M_empty						=	14380,	-- kg  with pilot and nose load, F15
+	M_nominal					=	21000,	-- kg (Empty Plus Full Internal Fuel)
+	M_max						=	32845,	-- kg (Maximum Take Off Weight)
+	M_fuel_max					=	6103,	-- kg (Internal Fuel Only)
+	H_max 					 	= 	18000, -- m
+	average_fuel_consumption 	= 	0.85, -- this is highly relative, but good estimates are 36-40l/min = 28-31kg/min = 0.47-0.52kg/s -- 45l/min = 35kg/min = 0.583kg/s
+	CAS_min 					= 	60, -- if this is not OVERAL FLIGHT TIME, but jus LOITER TIME, than it sholud be 10-15 minutes.....CAS capability in minute (for AI)
 	V_opt 						=	254,		-- Cruise speed (for AI)* (m/s)
 	V_take_off 					=	61, 		-- Take off speed in m/s (for AI)*	(122)
 	V_land 						=	71, 		-- Land speed in m/s (for AI)
@@ -246,13 +246,13 @@ F6 =  {
 	has_afteburner 				= false, -- AFB yes/no
 	has_speedbrake 				= true, -- Speedbrake yes/no
 	
-	nose_gear_pos 				                = {3.745, -1.695, 0},   -- position of gear
+		nose_gear_pos 				                = {3.750, -1.670, 0},   -- position of gear
 	    nose_gear_amortizer_direct_stroke   		=  0.000,  -- down from nose_gear_pos
 	    nose_gear_amortizer_reversal_stroke  		=  -0.160,  -- up 0.161m 3D Modell MK6
 	    nose_gear_amortizer_normal_weight_stroke 	=  -0.110,   -- up
 	    nose_gear_wheel_diameter 	                =  0.455, -- 3D Modell MK6
 
-	    main_gear_pos 						 	    = {-0.790, -1.700, 2.300}, -- changed back
+	    main_gear_pos 						 	    = {-0.790, -1.700, 0}, -- changed back
 	    main_gear_amortizer_direct_stroke	 	    =  0.000, -- down from main_gear_pos
 	    main_gear_amortizer_reversal_stroke  	    =  -0.240, -- up 0.24m 3D Modell MK6
 	    main_gear_amortizer_normal_weight_stroke    =  -0.170,-- down from main_gear_pos
@@ -292,8 +292,6 @@ F6 =  {
 		}, -- end of [1]
 	}, -- end of engines_nozzles
 	
- 	sounderName         = "Aircraft/Planes/F6",
-
 	crew_size	 = 1,
 	crew_members = 
 	{
@@ -450,8 +448,7 @@ modulation 		= MODULATION_AM
 		--	ejector_pos_connector = "ejector_2",
 			}),
 		},
-	
-			stores_number =	3,  
+	  
 			Pylons = {
 				pylon(1, 2, -9.23,	0,	0,--SMOKE POD 
 				{
@@ -728,23 +725,23 @@ modulation 		= MODULATION_AM
 					lights = {	
 						{
                             typename = "argnatostrobelight", argument = 194,
-                            controller = "Strobe", mode = 1, power_up_t = 0.1, cool_down_t = 0.0, 
+                            controller = "Strobe", mode = 1, power_up_t = 0.4, cool_down_t = 0.3, 
 							period = 2.2, reduced_flash_time = 0.5, phase_shift = 0.5,
                         },
 						{
                             typename = "argnatostrobelight", argument = 190,
-                            controller = "Strobe", mode = 1, power_up_t = 0.1, cool_down_t = 0.0, 
-							period = 2.2, reduced_flash_time = 0.5, phase_shift = 0.0,
+                            controller = "Strobe", mode = 1, power_up_t = 0.4, cool_down_t = 0.3, 
+							period = 2.2, reduced_flash_time = 0.5, phase_shift = 1.0,
                         },
 						{
                             typename = "argnatostrobelight", argument = 191,
-                            controller = "Strobe", mode = 1, power_up_t = 0.1, cool_down_t = 0.0, 
-							period = 2.2, reduced_flash_time = 0.5, phase_shift = 0.0,
+                            controller = "Strobe", mode = 1, power_up_t = 0.4, cool_down_t = 0.3, 
+							period = 2.2, reduced_flash_time = 0.5, phase_shift = 1.5,
                         },
 						{
                             typename = "argnatostrobelight", argument = 193,
-                            controller = "Strobe", mode = 1, power_up_t = 0.1, cool_down_t = 0.0, 
-							period = 2.2, reduced_flash_time = 0.5, phase_shift = 0.0,
+                            controller = "Strobe", mode = 1, power_up_t = 0.4, cool_down_t = 0.3, 
+							period = 2.2, reduced_flash_time = 0.5, phase_shift = 2.0,
                         },--Mode 0 ?
 					}
 			},
@@ -783,6 +780,7 @@ modulation 		= MODULATION_AM
 	[WOLALIGHT_BEACONS]	= {},-- STROBE / ANTI-COLLISION
 	[WOLALIGHT_CABIN_NIGHT]	= {},--
 	}},
+
 	
 	ColdStartDefaultControls = {
 	[24] = 1, -- Cover
@@ -803,6 +801,122 @@ modulation 		= MODULATION_AM
 }
 
 add_aircraft(F6)
+
+declare_loadout({
+	category = CAT_FUEL_TANKS,
+	CLSID = "{Hunter_F6_1000R_ptb}",
+	attribute = {wsType_Air,wsType_Free_Fall,wsType_FuelTank,WSTYPE_PLACEHOLDER},
+	Picture = "PTB.png",
+	displayName = _("Fuel tank 675 Litre Right"),
+	Weight_Empty = 	50 + 136, -- Kg
+	Weight = 		50 + 590 + 136, -- Kg
+	Capacity = 		590,
+	Cx_pil = 0.00124,
+	shape_table_data = {
+		{
+			name = "Hunter_F6_1000R_ptb",
+			file = "Hunter_F6_1000R_ptb",
+			username = "Hunter_F6_1000R_ptb",
+			life = 1,
+			fire = {0,1},
+			index = WSTYPE_PLACEHOLDER,
+		},
+	},
+	Elements = {
+		{
+			ShapeName = "Hunter_F6_1000R_ptb",
+		},
+	}
+})
+
+
+declare_loadout({
+	category = CAT_FUEL_TANKS,
+	CLSID = "{Hunter_F6_500R_ptb}",
+	attribute = {wsType_Air,wsType_Free_Fall,wsType_FuelTank,WSTYPE_PLACEHOLDER},
+	Picture = "PTB.png",
+	displayName = _("Fuel tank 455 Litre Right"),
+	Weight_Empty = 	50 + 136, -- Kg
+	Weight = 		50 + 414 + 136, -- Kg
+	Capacity = 		414,
+	Cx_pil = 0.00124,
+	shape_table_data = {
+		{
+			name = "Hunter_F6_500R_ptb",
+			file = "Hunter_F6_500R_ptb",
+			username = "Hunter_F6_500R_ptb",
+			life = 1,
+			fire = {0,1},
+			index = WSTYPE_PLACEHOLDER,
+		},
+	},
+	Elements = {
+		{
+			ShapeName = "Hunter_F6_500R_ptb",
+		},
+	}
+})
+
+
+
+declare_loadout({
+	category = CAT_FUEL_TANKS,
+	CLSID = "{Hunter_F6_1000L_ptb}",
+	attribute = {wsType_Air,wsType_Free_Fall,wsType_FuelTank,WSTYPE_PLACEHOLDER},
+	Picture = "PTB.png",
+	displayName = _("Fuel tank 675 Litre Left"),
+	Weight_Empty = 	50 + 136, -- Kg
+	Weight = 		50 + 590 + 136, -- Kg
+	Capacity = 		590,
+	Cx_pil = 0.00124,
+	shape_table_data = {
+		{
+			name = "Hunter_F6_1000L_ptb",
+			file = "Hunter_F6_1000L_ptb",
+			username = "Hunter_F6_1000L_ptb",
+			life = 1,
+			fire = {0,1},
+			index = WSTYPE_PLACEHOLDER,
+		},
+	},
+	Elements = {
+		{
+			ShapeName = "Hunter_F6_1000L_ptb",
+		},
+	}
+})
+
+
+
+declare_loadout({
+	category = CAT_FUEL_TANKS,
+	CLSID = "{Hunter_F6_500L_ptb}",
+	attribute = {wsType_Air,wsType_Free_Fall,wsType_FuelTank,WSTYPE_PLACEHOLDER},
+	Picture = "PTB.png",
+	displayName = _("Fuel tank 455 Litre Left"),
+	Weight_Empty = 	50 + 136, -- Kg
+	Weight = 		50 + 414 + 136, -- Kg
+	Capacity = 		414,
+	Cx_pil = 0.00124,
+	shape_table_data = {
+		{
+			name = "Hunter_F6_500L_ptb",
+			file = "Hunter_F6_500L_ptb",
+			username = "Hunter_F6_500L_ptb",
+			life = 1,
+			fire = {0,1},
+			index = WSTYPE_PLACEHOLDER,
+		},
+	},
+	Elements = {
+		{
+			ShapeName = "Hunter_F6_500L_ptb",
+		},
+	}
+})
+
+
+
 
 
 
